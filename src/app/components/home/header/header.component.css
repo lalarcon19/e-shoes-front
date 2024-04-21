@@ -1,0 +1,27 @@
+
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+#header{
+  display: flex;
+  height: 15vh;
+  border-style:groove;
+}
+
+.izquierda{
+  background-color: rgb(178, 209, 199);
+  width: 33vw;
+}
+
+.centro{
+  background-color: rgb(137, 208, 240);
+  width: 33vw;
+}
+
+.derecha{
+  background-color: rgb(60, 121, 242);
+  width: 35vw;
+  display: flex;
+}

@@ -1,0 +1,18 @@
+html{
+  margin: 0;
+  padding: 0;
+}
+
+.hola{
+  background-color: black;
+  height: 8vh;
+}
+
+.imgInicio{
+  border-style:groove;
+  height: 50vh;
+  font: oblique bold 300% cursive;
+  background-image:url(https://i.pinimg.com/236x/f3/3c/bc/f33cbca299fa83513a0e1b9e17ed80e3.jpg);
+}
+
+
