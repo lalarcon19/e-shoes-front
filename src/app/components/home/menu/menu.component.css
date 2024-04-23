@@ -3,6 +3,17 @@
   height:60px;
   display: flex;
   justify-content: center;
-  border-style:groove;
+  background-color: rgb(222, 218, 218);
 }
+
+a{
+  display: flex;
+  margin-right: 5vh;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  margin-top: 15px;
+}
+
+
 
