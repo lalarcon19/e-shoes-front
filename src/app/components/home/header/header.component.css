@@ -14,28 +14,40 @@ body{
 
 /*Logo de la pagina*/
 .izquierda{
-  width: 25vw;
+  width: 35%;
+}
+
+h1{
+  display: flex;
+  font-size: 6vh;
+  margin: 0 0 0px 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /*Barra de busqueda*/
 .barra{
-  width: 38vw;
+  width: 35%;
   position: relative;
 }
 
 input{
-  margin-left: 25%;
-  width: 70%;
-  height: 60%;
+  margin-left: 15%;
+  padding-right: 30px;
+  padding-left:30px;
+  height: 65%;
+  width: 50%;
   font-size: 20px;
   border-radius: 10px;
   outline: none;
   background: transparent;
 }
+
 .button{
+  right: 100px;
+  top: 30%;
+  left: 45vh;
+  padding: 0;
   position: absolute;
-  top: 0;
-  right: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -45,7 +57,7 @@ input{
 
 /*configuracion de los iconos*/
 .derecha{
-  width: 40vw;
+  width: 30%;
   display: flex;
   justify-content:end;
 }

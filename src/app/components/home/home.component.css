@@ -3,7 +3,7 @@ html{
   padding: 0;
 }
 
-.hola{
+.informacion{
   background-color: black;
   height: 8vh;
   height:60px;
@@ -27,13 +27,28 @@ nav a {
 }
 
 
-.imgInicio{
+.container{
   height: 70vh;
-  font: oblique bold 300% cursive;
-  background-image:url(https://i.pinimg.com/236x/f3/3c/bc/f33cbca299fa83513a0e1b9e17ed80e3.jpg);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-image:url(img/photo-1524532787116-e70228437bbe.avif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  }
+
+.texto{
+  color: black;
+  -webkit-text-stroke: 1px  rgb(237, 228, 97);
+  width: 30%;
+  height: 70%;
+  font-size: 4em;
+  margin-left: 20vh;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  line-height: 1.3;
 }
-p{
-  margin: 0;
-}
+
+
 
 

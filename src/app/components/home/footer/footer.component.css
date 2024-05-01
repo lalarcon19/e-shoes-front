@@ -1,12 +1,19 @@
 #footer{
-  height: 50vh;
-  border-style:groove;
-  font: oblique bold 300% cursive;
-  justify-content: center;
+  height: 90vh;
+
 }
 
 .contactos{
-  border-style:groove;
+  height: 100%;
 }
+
+.metodosPagos{
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  border-style: groove;
+  color: rgb(156, 153, 153);
+}
+
 
 
