@@ -2,50 +2,50 @@ body{
   margin: 0;
   padding: 0;
 }
-.boton1{
+/*configuracion de botones*/
+.botones{
+  display: flex;
+  justify-content:flex-end;
+  margin-right: 7vw;
+
+}
+.btn{
   display: inline-block;
-  background-color: #12528a;
+  background-color:rgb(217, 179, 37);
   padding: 10px 20px;
   margin: 15vh 2px 30px 40px;
   font-size: 16px;
   text-align: center;
-  text-decoration: none;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
-}
-.boton2{
-  display: inline-block;
-  background-color: #12528a;
-  padding: 10px 20px;
-  margin: 30px 2px 30px 30px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
+  border-color: none;
 }
 a{
-  color: rgb(247, 236, 217);
-  text-decoration: none;
+ text-decoration: none;
+ color: black;
 }
-.boton1:hover {
-  background-color: #0056b3;
-}
-.boton2:hover {
-  background-color: #0056b3;
+.btn:hover {
+  background-color:rgb(224, 203, 128);
 }
 
+
+
+/*Configuracion de tabla*/
 .table{
   font-family: Arial, sans-serif;
   border-collapse: collapse;
   width: 90%;
-  margin: 20px;
-  
+  margin: 40px;
 }
 
-td, th{ border: 1px solid #dddddd;
-text-align: left;
-padding: 8px;
+th{
+ background-color:rgb(217, 179, 37);
+}
+
+.edit{
+  background-color:rgb(26, 239, 7);
+}
+.delete{
+  background-color:rgb(245, 7, 7);
 }

@@ -7,7 +7,7 @@ body{
 /*Encabezado principal*/
 #header{
   display: flex;
-  height: 8vh;
+  height: 8%;
   margin-top: 30px;
 
 }
@@ -43,7 +43,7 @@ input{
 }
 
 .button{
-  right: 100px;
+  right: 100%;
   top: 30%;
   left: 45vh;
   padding: 0;
@@ -65,14 +65,14 @@ input{
 .derecha a{
   display: flex;
   justify-content: space-between;
-  margin-right: 5vh;
+  margin-right: 5%;
   text-decoration: none;
   color: black;
   font-size: 20px;
 }
 
 .text{
-  margin-left: 10px;
+  margin-left: 5%;
 
 }
 

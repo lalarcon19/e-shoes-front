@@ -3,14 +3,14 @@ body {
   background-color: #f2f2f2;
   margin: 0;
   padding: 0;
+  height: 50em;
 }
 h2{
-  margin-bottom: 40px;
   font-size: 35px;
   text-align: center;
 }
 
-.add-category{
+.add-product {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,8 +18,9 @@ h2{
 }
 
 .form {
+  margin-top: 30vh;
   background-color: #fff;
-  height: 50vh;
+  height: 80vh;
   width: 50vh;
   padding: 70px;
   border-radius: 5px;
@@ -60,3 +61,5 @@ button {
 button:hover {
   background-color:rgba(176, 166, 26, 0.834)
 }
+
+

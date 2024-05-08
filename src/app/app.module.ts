@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 
@@ -19,6 +19,17 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ShoppinCartComponent } from './components/shoppin-cart/shoppin-cart.component';
 import { MonitorProductsComponent } from './components/product/monitor-products/monitor-products.component';
+import { AddProductComponent } from './components/product/add-product/add-product.component';
+
+const routes: Routes = [
+  {path:'home',component:HomeComponent},
+  {path:'iniciar-sesion',component:LoginComponent},
+  {path:'registro',component:RegisterComponent},
+  {path: 'favoritos', component:FavoriteComponent},
+  {path: 'agregar-producto', component:AddProductComponent},
+  {path: 'agregar-categoria', component:CategoryComponent},
+]
+
 
 @NgModule({
   declarations: [
@@ -34,9 +45,9 @@ import { MonitorProductsComponent } from './components/product/monitor-products/
     MenuComponent,
     LoginComponent,
     RegisterComponent,
-
     ShoppinCartComponent,
-     MonitorProductsComponent
+     MonitorProductsComponent,
+     AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,7 @@ import { MonitorProductsComponent } from './components/product/monitor-products/
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
