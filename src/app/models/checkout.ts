@@ -1,8 +1,9 @@
 
 export interface Checkout{
-  idCheckout:number;
+  idInvoice:number;
   totalPrice:number;
   orderStatus:String;
   dateInvoice:Date;
+  numberInvoice:String;
   text:Text;
 }

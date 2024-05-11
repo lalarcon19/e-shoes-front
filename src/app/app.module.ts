@@ -20,6 +20,8 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { ShoppinCartComponent } from './components/shoppin-cart/shoppin-cart.component';
 import { MonitorProductsComponent } from './components/product/monitor-products/monitor-products.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -57,6 +59,8 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,12 +15,15 @@ body{
 /*Logo de la pagina*/
 .izquierda{
   width: 35%;
+  margin-bottom: 1%;
 }
 
 h1{
   display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 6vh;
-  margin: 0 0 0px 20px;
+  margin: 0 0 0 20%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -32,11 +35,11 @@ h1{
 
 input{
   margin-left: 15%;
-  padding-right: 30px;
-  padding-left:30px;
+  padding-right:5%;
+  padding-left:5%;
   height: 65%;
   width: 50%;
-  font-size: 20px;
+  font-size: 1em;
   border-radius: 10px;
   outline: none;
   background: transparent;
@@ -72,7 +75,7 @@ input{
 }
 
 .text{
-  margin-left: 5%;
+  margin-left:2%;
 
 }
 
