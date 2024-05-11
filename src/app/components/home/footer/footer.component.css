@@ -1,0 +1,19 @@
+#footer{
+  height: 90vh;
+
+}
+
+.contactos{
+  height: 100%;
+}
+
+.metodosPagos{
+  height: 10em;
+  display: flex;
+  justify-content: center;
+  border-style: groove;
+  color: rgb(156, 153, 153);
+}
+
+
+

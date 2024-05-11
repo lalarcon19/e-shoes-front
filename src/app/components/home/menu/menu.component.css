@@ -1,0 +1,19 @@
+
+.menu{
+  height:60px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(237, 228, 97);
+}
+
+a{
+  display: flex;
+  margin-right: 5vh;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  margin-top: 15px;
+}
+
+
+
