@@ -4,6 +4,5 @@ export interface Product {
   name:String;
   price:number;
   category_id:number;
-  user_final:number;
   img:String;
 }

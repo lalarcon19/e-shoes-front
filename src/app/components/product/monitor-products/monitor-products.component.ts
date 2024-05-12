@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { CategoryComponent } from '../../category/category.component';
 
 @Component({
   selector: 'app-monitor-products',
@@ -12,8 +13,12 @@ export class MonitorProductsComponent {
 
   openAddProduct(): void {
     const dialogRef = this.dialog.open(AddProductComponent, {
-      height: '80vh',
-      width: '100vh'
     })
   }
+
+  openCategory():void{
+    const dialogRef = this.dialog.open(CategoryComponent, {
+    })
+  }
+
 }

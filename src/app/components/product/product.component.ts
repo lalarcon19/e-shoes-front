@@ -18,7 +18,6 @@ export class ProductComponent implements OnInit {
     name: 'producto 1',
     price: 12345,
     category_id: 1,
-    user_final: 1,
     img: 'img1',
   };
 

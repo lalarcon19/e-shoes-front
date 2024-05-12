@@ -9,14 +9,14 @@ body {
 h2 {
   font-size: 2em;
   text-align: center;
+  letter-spacing: 2px; 
 }
 
-/* Centrar el producto agregado en la pantalla */
 .add-product {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupar toda la altura de la ventana */
+ /* Ocupar toda la altura de la ventana */
 }
 
 /* Estilizar el formulario */
@@ -26,7 +26,6 @@ h2 {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: auto; /* Ajustar el ancho automáticamente */
-  max-width: 500px; /* Máximo ancho del formulario */
 }
 
 /* Estilizar los grupos de entrada */
@@ -34,12 +33,20 @@ h2 {
   display: block;
   margin-bottom: 0.5em; /* Espacio entre la etiqueta y el campo de entrada */
 }
+select {
+  width: calc(92% - 10px);
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
 
 .input-group input,
 button {
-  width: calc(100% - 20px); /* Ajustar el ancho y restar el padding */
-  margin: 0 10px; /* Centrar dentro del grupo de entrada */
-  padding: 10px;
+  width: calc(90% - 10px);
+  margin: 0 10px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 20px;
 }

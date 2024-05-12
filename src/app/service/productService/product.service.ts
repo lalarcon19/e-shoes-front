@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-const urlProduct = "http://localhost:8080/products"
+import { Response } from 'src/app/models/response';
+const urlProduct = "http://localhost:8080/product"
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  public createProduct(data:any):Observable<Product>{
-    return this.http.post<Product>(urlProduct+"/create",data);
+  public createProduct(data:any):Observable<Response>{
+    return this.http.post<Response>(urlProduct+"/create",data)
   }
   public getAllProducts():Observable<Product>{
     return this.http.get<Product>(urlProduct+ "/all")
