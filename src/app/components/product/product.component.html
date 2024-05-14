@@ -12,13 +12,13 @@
         <h1>Lista de productos</h1>
       </div>
       <div class="contenedor-items">
-        <div class="item" *ngFor="let product of products">
-          <span class="titulo-item">{{ product.name }}</span>
+        <div class="item" *ngFor="let item of products">
+          <span class="titulo-item">{{ item.name }}</span>
           <img src="../home/img/{product.img}}" alt="" class="img-item" />
-          <span class="precio-item">{{ product.price }}</span>
+          <span class="precio-item">{{ item.price }}</span>
           <button class="boton-item">Agregar</button>
         </div>
-        <div class="item">
+       <!--<div class="item">
           <span class="titulo-item">English Horse</span>
           <img
             src="https://i.pinimg.com/564x/44/34/a9/4434a929154b28e4b4b83260ebeaf0e9.jpg"
@@ -97,7 +97,7 @@
           />
           <span class="precio-item">$42.800</span>
           <button class="boton-item">Agregar al Carrito</button>
-        </div>
+        </div>-->
       </div>
     </section>
   </body>

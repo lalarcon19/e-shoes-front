@@ -15,8 +15,8 @@ export class ProductService {
   public createProduct(data:any):Observable<Response>{
     return this.http.post<Response>(urlProduct+"/create",data)
   }
-  public getAllProducts():Observable<Product>{
-    return this.http.get<Product>(urlProduct+ "/all")
+  public getAllProducts():Observable<Product[]>{
+    return this.http.get<Product[]>(urlProduct+ "/getAll")
   }
   public getByName(name: String):Observable<Product>{
     return this.http.get<Product>(urlProduct + `/getByName/${name}`);
@@ -25,7 +25,7 @@ export class ProductService {
     return this.http.put<Product>(urlProduct,`/updateProduct/${idProduct}`)
   }
 
-  public deleteProduct(name: String):Observable<Product>{
-    return this.http.delete<Product>(urlProduct + `/deleteProsuct/${name}`)
+  public deleteProduct(name: String):Observable<any>{
+    return this.http.delete(urlProduct + `/deleteProduct/${name}`)
   }
 }

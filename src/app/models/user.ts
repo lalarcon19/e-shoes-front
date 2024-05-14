@@ -1,16 +1,12 @@
 
 export interface User {
-
-  name:String;
-  lastName:String;
-  email:String;
-  typeDocument:String;
-  document:String;
+  id:number
   address:String;
-  userName:String;
+  document:String;
+  email:String;
+  lastName:String
+  name:String;
   password:String;
-  isEnable:boolean;
-  accountNoExpired:boolean;
-  accountNoLocked:boolean;
-  credentialNoExpire:boolean;
+  userName:String;
+  document_type:String;
 }

@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  public getAllUser():Observable<User>{
-    return this.http.get<User>(urlUser + "/getAll")
+  public getAllUser():Observable<User[]>{
+    return this.http.get<User[]>(urlUser + `/getAll`)
   }
 
   public getByName(name:String):Observable<User>{

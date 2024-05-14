@@ -22,27 +22,26 @@
       </button>
     </div>
     <table class="table table-bordered">
-      <caption>Lista de productos</caption>
       <thead>
         <th scope="col">ID</th>
         <th scope="col">NOMBRE</th>
         <th scope="col">IMAGEN</th>
-        <th scope="col">DESCRIPCION</th>
-        <th scope="col">TALLAS</th>
         <th scope="col">CATEGORIA</th>
         <th scope="col">PRECIO</th>
-        <th scope="col"> <button class="edit"><i class="fas fa-edit"></i></button></th>
-        <th scope="col"> <button class="delete"><i class="fas fa-trash-alt"></i></button></th>
+        <th scope="col">MOVIMIENTOS</th>
       </thead>
       <tbody>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <tr *ngFor="let product of listProduct">
+          <td>{{product.idProduct}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.category_id}}</td>
+          <td></td>
+          <td scope="col">
+            <button class="btn btn-succes" (click)="deleteProduct(product.name)"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" (click)="updateProduct(product.idProduct)"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </body>

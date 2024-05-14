@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
-
+import { ProductService } from 'src/app/service/productService/product.service';
 
 @Component({
   selector: 'app-product',
@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
     img: 'img1',
   };
 
-  constructor() {}
+  constructor(private productService:ProductService) {}
   ngOnInit() {}
 
   getImgOfProduct(input: string) {
@@ -31,6 +31,13 @@ export class ProductComponent implements OnInit {
 
   addProductToCheckout(product: Product) {
       this.checkout.push(product);
+  }
+  getAllProducts(): void {
+    this.productService.getAllProducts().subscribe(res=> {
+      console.log(res);
+      this.products= res;
+    });
+
   }
 
   openModal() {}
