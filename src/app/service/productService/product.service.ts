@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/models/product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Response } from 'src/app/models/response';
+import { ProductResponse } from 'src/app/models/product';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+
 const urlProduct = "http://localhost:8080/product"
 
 @Injectable({
@@ -10,22 +11,36 @@ const urlProduct = "http://localhost:8080/product"
 })
 export class ProductService {
 
-  constructor(private http:HttpClient) { }
+  private headers: HttpHeaders;
 
-  public createProduct(data:any):Observable<Response>{
-    return this.http.post<Response>(urlProduct+"/create",data)
-  }
-  public getAllProducts():Observable<Product[]>{
-    return this.http.get<Product[]>(urlProduct+ "/getAll")
-  }
-  public getByName(name: String):Observable<Product>{
-    return this.http.get<Product>(urlProduct + `/getByName/${name}`);
-  }
-  public updateProduct(idProduct: number):Observable<Product>{
-    return this.http.put<Product>(urlProduct,`/updateProduct/${idProduct}`)
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+
+    this.headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token,
+      'Content-Type': 'application/json'
+    });
+
+   }
+
+  token = this.localStorageService.getToken()
+
+  public createProduct(data: any): Observable<ProductResponse> {
+    return this.http.post<ProductResponse>(urlProduct + "/create", data);
   }
 
-  public deleteProduct(name: String):Observable<any>{
-    return this.http.delete(urlProduct + `/deleteProduct/${name}`)
+  public getAllProducts(): Observable<ProductResponse[]> {
+    return this.http.get<ProductResponse[]>(urlProduct + "/getAll", { headers: this.headers })
+  }
+
+  public getByName(name: String): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(urlProduct + `/getByName/${name}`);
+  }
+
+  public updateProduct(idProduct: number): Observable<ProductResponse> {
+    return this.http.put<ProductResponse>(urlProduct, `/update/${idProduct}`)
+  }
+
+  public deleteProduct(id: number): Observable<ProductResponse> {
+    return this.http.delete<ProductResponse>(urlProduct + `/delete/${id}`)
   }
 }

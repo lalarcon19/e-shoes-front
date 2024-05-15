@@ -15,5 +15,35 @@
   color: rgb(156, 153, 153);
 }
 
+.informacion {
+  background-color: black;
+  height: 8vh;
+  height: 60px;
+  display: flex;
+  justify-content: end;
+}
+
+a {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  margin-right: 30px;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+nav a {
+  position: relative;
+  top: 10px;
+  /* Ajusta la posición vertical */
+  left: 20px;
+  /* Ajusta la posición horizontal */
+}
+
+
+
+
+
+
 
 

@@ -4,3 +4,9 @@ export interface Category {
   nameCategory:String;
   description:String;
 }
+
+export enum CategoryEnum {
+  DEPORTIVOS,
+  CASUALES,
+  ELEGANTES
+}

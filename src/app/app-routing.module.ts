@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
@@ -9,19 +9,26 @@ import { ShoppinCartComponent } from './components/shoppin-cart/shoppin-cart.com
 import { ProductComponent } from './components/product/product.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { CategoryComponent } from './components/category/category.component';
-
-
-
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'inicio-sesion',component:LoginComponent},
-  {path:'registrate',component:RegisterComponent},
-  {path: 'carrito', component:ShoppinCartComponent},
-  {path: 'agregar-producto', component:AddProductComponent},
-  {path: 'agregar-categoria', component:CategoryComponent},
-  {path: 'productos', component:ProductComponent}
+  
+  { path: 'inicio', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registrate', component: RegisterComponent },
+  { path: 'carrito', component: ShoppinCartComponent },
+  { path: 'agregar-producto', component: AddProductComponent },
+  { path: 'agregar-categoria', component: CategoryComponent },
+  { path: 'productos', component: ProductComponent },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    children: [
+      //Rutas hijas del dashboard
+      { path: 'productos', component: ProductComponent }
+    ]
+  },
 ]
 
 @NgModule({
@@ -29,4 +36,4 @@ const routes: Routes = [
   exports: [RouterModule]
 
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

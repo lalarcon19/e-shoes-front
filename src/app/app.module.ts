@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
@@ -19,19 +19,10 @@ import { MenuComponent } from './components/home/menu/menu.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ShoppinCartComponent } from './components/shoppin-cart/shoppin-cart.component';
-import { MonitorProductsComponent } from './components/product/monitor-products/monitor-products.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-
-const routes: Routes = [
-  {path:'home',component:HomeComponent},
-  {path:'iniciar-sesion',component:LoginComponent},
-  {path:'registro',component:RegisterComponent},
-  {path: 'favoritos', component:FavoriteComponent},
-  {path: 'agregar-producto', component:AddProductComponent},
-  {path: 'agregar-categoria', component:CategoryComponent},
-]
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -49,8 +40,8 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ShoppinCartComponent,
-     MonitorProductsComponent,
-     AddProductComponent
+    AddProductComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

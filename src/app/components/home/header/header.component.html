@@ -1,35 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="./header.component.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<header id="header">
 
-</head>
-<body>
-  <header id="header">
-    <div class="izquierda">
-       <h1>Compras easy hj</h1>
-    </div>
-    <div class="barra">
-      <input type="text" placeholder="Buscar....">
-      <button text="submit" class="button"><i class="fas fa-search"></i></button>
+  <div class="container">
+    <h1>easy</h1>
+  </div>
 
-    </div>
+  <div class="container search">
+    <input type="text" class="input" placeholder="Ej. Adidas">
+    <button text="submit" class="button"><i class="fas fa-search search-icon"></i></button>
+  </div>
 
-    <div class="derecha">
-      <div class="icono"><i class="fas fa-user-circle"></i></div>
-      <a href="inicio-sesion" class="text">login</a>
-      <div class="icono"><i class="fas fa-heart"></i></div>
-      <a href="#" class="text">favoritos</a>
-      <div class="icono"><i class="fas fa-shopping-cart"></i></div>
-      <a href="carrito" class="text">carrito</a>
-    </div>
+  <div class="container c-c">
+    <span class="icono"><i class="fas fa-user-circle"></i></span>
+    <a href="login" class="text">Login</a>
+    <span class="icono"><i class="fas fa-heart"></i></span>
+    <a href="#" class="text">Favoritos</a>
+    <span class="icono"><i class="fas fa-shopping-cart"></i></span>
+    <a href="carrito" class="text">Carrito</a>
+  </div>
 </header>
-</body>
-</html>
