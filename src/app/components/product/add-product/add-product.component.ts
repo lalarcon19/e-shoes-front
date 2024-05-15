@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validator} from '@angular/forms';
 import { ProductService } from 'src/app/service/productService/product.service';
 import { Response } from 'src/app/models/response';
+import { ProductResponse } from 'src/app/models/product';
 
 @Component({
   selector: 'app-add-product',
@@ -30,10 +31,7 @@ constructor(private productService:ProductService){}
       img:this.productForm.get('img')?.value,
     }
    this.productService.createProduct(product).subscribe({
-    next: (res: Response) => {
-      if(res.status === "200"){
-        alert("Registro del producto exitoso");
-      }
+    next: (res: ProductResponse) => {
     },
     error: (error) =>{
       console.error(error)

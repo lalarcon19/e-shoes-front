@@ -5,7 +5,7 @@ import { AuthResponse } from 'src/app/models/auth-response';
 import { LoginRequest } from 'src/app/models/auth-request';
 import { SignupRequest } from 'src/app/models/signup-request';
 import { AuthService } from 'src/app/service/authService/auth.service';
-//import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { Token } from 'src/app/models/token';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 
@@ -18,6 +18,7 @@ export class LoginComponent {
 
   roles: string[] = ['ROLE_ADMIN', 'ROLE_USER']
   flag: boolean = true
+  path: boolean = true
 
   loginForm = new FormGroup({
     username: new FormControl(''),
@@ -40,7 +41,7 @@ export class LoginComponent {
       res => {
         if (res.status === true) {
           this.localStorageService.setItem('token', res.jwt)
-          //this.defineView(res.jwt)
+          this.defineView(res.jwt)
         } else {
           this.flag == false
         }
@@ -53,11 +54,13 @@ export class LoginComponent {
 
   }
 
-  /*defineView(token: string) {
+  defineView(token: string) {
     let role = this.decodeJwt(token)
     if (role === this.roles[0]) {
-      this.router.navigate(['/productos']);
+      this.path = false
+      this.router.navigate(['/dashboard']);
     } else {
+      this.path = true
       this.router.navigate(['/inicio'])
     }
   }
@@ -76,6 +79,6 @@ export class LoginComponent {
     }
 
     return this.roles[1]
-  }*/
+  }
 
 }

@@ -10,6 +10,7 @@ import { ProductComponent } from './components/product/product.component';
 import { AddProductComponent } from './components/product/add-product/add-product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   
@@ -20,13 +21,16 @@ const routes: Routes = [
   { path: 'agregar-producto', component: AddProductComponent },
   { path: 'agregar-categoria', component: CategoryComponent },
   { path: 'productos', component: ProductComponent },
+  { path: 'usuario', component: UserComponent },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
     path: "dashboard",
     component: DashboardComponent,
     children: [
       //Rutas hijas del dashboard
-      { path: 'productos', component: ProductComponent }
+      { path: 'productos', component: ProductComponent },
+      { path: 'usuario', component: UserComponent },
+      { path: 'category', component: CategoryComponent }
     ]
   },
 ]

@@ -1,54 +1,53 @@
+<section class="contenedor">
+  <!-- Contenedor de elementos -->
+  <div>
+    <h1>Lista de productos</h1>
+  </div>
+  <div class="contenedor-items" *ngIf="!isAdmin && !flag">
+    <div class="item" *ngFor="let product of products">
 
-    <section class="contenedor">
-      <!-- Contenedor de elementos -->
-      <div>
-        <h1>Lista de productos</h1>
+      <img src="https://i.pinimg.com/564x/36/fc/12/36fc12635f8ebdcb9cc49083ff28993c.jpg" alt="" class="img-item" />
+      <span class="titulo-item">{{ product.name }}</span>
+      <span class="precio-item">$ {{ product.price }}</span>
+      <span class="category-item"></span>
+      <div class="btns">
+        <button class="boton-item">Comprar</button>
+        <button class="boton-item"><i class="fas fa-shopping-cart"></i></button>
       </div>
-      <div class="contenedor-items" *ngIf="!isAdmin">
-        <div class="item" *ngFor="let product of products">
-          
-          <img src="https://i.pinimg.com/564x/36/fc/12/36fc12635f8ebdcb9cc49083ff28993c.jpg" alt="" class="img-item" />
-          <span class="titulo-item">{{ product.name }}</span>
-          <span class="precio-item">$ {{ product.price }}</span>
-          <span class="category-item"></span>
-          <div class="btns">
-            <button class="boton-item">Comprar</button>
-            <button class="boton-item"><i class="fas fa-shopping-cart"></i></button>
-          </div>
-        </div>
-        
-      </div>
+    </div>
 
-      <div class="container-table" *ngIf="isAdmin">
-        <table class="table">
-    
-          <tr>
-            <th><input type="checkbox"></th>
-            <th> ID </th>
-            <th> Nombre </th>
-            <th> Precio </th>
-            <th> Categoria </th>
-            <th> img </th>
-            <th><button class="eliminar"><i class="fa-solid fa-trash"></i></button></th>
-          </tr>
-      
-          <tr *ngFor="let product of products">
-            <td>
-              <input type="checkbox">
-            </td>
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.img }}</td>
-            <td><button class="eliminar"><i class="fa-solid fa-trash "></i></button></td>
-          </tr>
-      
-        </table>
-    
-        <div *ngIf="show" class="registro-span">
-          <span>No hay registros</span>
-        </div>
-    
-      </div>
-    </section>
+  </div>
+
+  <div class="container-table" *ngIf="isAdmin && flag">
+    <table class="table">
+
+      <tr>
+        <th><input type="checkbox"></th>
+        <th> ID </th>
+        <th> Nombre </th>
+        <th> Precio </th>
+        <th> Categoria </th>
+        <th> img </th>
+        <th><button class="eliminar"><i class="fa-solid fa-trash"></i></button></th>
+      </tr>
+
+      <tr *ngFor="let product of products">
+        <td>
+          <input type="checkbox">
+        </td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.img }}</td>
+        <td><button class="eliminar"><i class="fa-solid fa-trash "></i></button></td>
+      </tr>
+
+    </table>
+
+    <div *ngIf="show" class="registro-span">
+      <span>No hay registros</span>
+    </div>
+
+  </div>
+</section>

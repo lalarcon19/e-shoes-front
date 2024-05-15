@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+.container a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.3em;
+}
+
 .search {
   border: 2px solid black;
   height: 50%;
@@ -59,3 +65,4 @@
   color: black;
   font-size: 1em;
 }
+

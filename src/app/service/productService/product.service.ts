@@ -12,6 +12,7 @@ const urlProduct = "http://localhost:8080/product"
 export class ProductService {
 
   private headers: HttpHeaders;
+  token = this.localStorageService.getToken()
 
   constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
 
@@ -22,7 +23,7 @@ export class ProductService {
 
    }
 
-  token = this.localStorageService.getToken()
+  
 
   public createProduct(data: any): Observable<ProductResponse> {
     return this.http.post<ProductResponse>(urlProduct + "/create", data);

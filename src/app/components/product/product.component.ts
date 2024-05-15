@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { Category, CategoryEnum } from 'src/app/models/category';
 import { ProductRequest, ProductResponse } from 'src/app/models/product';
 import { Token } from 'src/app/models/token';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
-import { ProductService } from 'src/app/service/productService/product.service';
 import { ProductService } from 'src/app/service/productService/product.service';
 
 @Component({
@@ -20,16 +20,20 @@ export class ProductComponent implements OnInit {
 
   show: boolean = true;
   isAdmin: boolean = false;
+  flag: boolean = false
+  path: string = this.router.url;
   roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
 
 
-  constructor(private productService: ProductService, private localStorageService: LocalStorageService) { }
+  constructor(private productService: ProductService, 
+    private localStorageService: LocalStorageService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getProduct();
   }
 
-  getProduct() {
+  getProduct() {   
     this.productService.getAllProducts().subscribe(res => {
       this.products = res;
       (this.products.length > 0) ? this.show = false : this.show = true;
@@ -41,11 +45,14 @@ export class ProductComponent implements OnInit {
   }
 
   defineView(token: string): void {
+    console.log(this.path);
     let role = this.decodeJwt(token);
 
-    if (role === this.roles[0]) {
+    if (role === this.roles[0] && this.path != '/productos') {
       this.isAdmin = true
+      this.flag = true
     } else {
+      this.flag == false
       this.isAdmin = false
     }
   }
