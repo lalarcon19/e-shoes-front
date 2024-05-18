@@ -2,9 +2,9 @@ export interface Token {
     iss: string,
     sub: string,
     authorities: string,
-    iat: string,
-    exp: string,
+    iat: number,
+    exp: number,
     jti: string,
     nbf: string,
-    user_id: string
+    user_id: number
 }

@@ -13,7 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
-  
+
   { path: 'inicio', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registrate', component: RegisterComponent },

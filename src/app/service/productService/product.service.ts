@@ -20,10 +20,7 @@ export class ProductService {
       'Authorization': 'Bearer ' + this.token,
       'Content-Type': 'application/json'
     });
-
    }
-
-  
 
   public createProduct(data: any): Observable<ProductResponse> {
     return this.http.post<ProductResponse>(urlProduct + "/create", data);

@@ -1,9 +1,12 @@
+import { PaymentResponse } from "./payment";
+
 export interface UserResponse {
   id:number
-  address:String;
-  document:String;
-  email:String;
-  lastName:String
-  name:String;
-  documentType:String;
+  address: string;
+  document: string;
+  email: string;
+  lastName: string
+  name: string;
+  documentType: string;
+  payment: PaymentResponse
 }

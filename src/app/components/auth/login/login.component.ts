@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/service/authService/auth.service';
 import { jwtDecode } from 'jwt-decode';
 import { Token } from 'src/app/models/token';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login',

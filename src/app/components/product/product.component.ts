@@ -13,7 +13,6 @@ import { ProductService } from 'src/app/service/productService/product.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  directory: string = '../home/img/';
 
   checkout: ProductResponse[] = [];
   products: ProductResponse[] = [];

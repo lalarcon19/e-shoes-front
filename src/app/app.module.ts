@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,6 +23,16 @@ import { AddProductComponent } from './components/product/add-product/add-produc
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreatePaymentComponent } from './components/payments/create-payment/create-payment.component';
+import { UpdatePaymentComponent } from './components/payments/update-payment/update-payment.component';
+
+export function jwtOptionsFactory() {
+  return {
+    tokenGetter: () => {
+      return localStorage.getItem('token');
+    }
+  };
+}
 
 
 @NgModule({
@@ -42,6 +52,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ShoppinCartComponent,
     AddProductComponent,
     DashboardComponent,
+    CreatePaymentComponent,
+    UpdatePaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +65,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
