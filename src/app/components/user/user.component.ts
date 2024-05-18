@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
       console.log(user);
       this.user = user;
       if (user.payment == null) {
-        this.showPayment = false
+        this.showPayment = true
       }  else {
         this.payment = user.payment
         this.showPayment = false
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit {
   }
 
   signup() {
-    this.router.navigate(['payment'])
+    console.log("se hizo click");
   }
 
   getUserId(): number {

@@ -14,15 +14,15 @@ import { ProductService } from 'src/app/service/productService/product.service';
 })
 export class ProductComponent implements OnInit {
 
-  checkout: ProductResponse[] = [];
+  carrito: ProductResponse[] = [];
   products: ProductResponse[] = [];
+  wishlist: ProductResponse[] = [];
 
   show: boolean = true;
   isAdmin: boolean = false;
   flag: boolean = false
   path: string = this.router.url;
   roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
-
 
   constructor(private productService: ProductService, 
     private localStorageService: LocalStorageService,
@@ -38,9 +38,7 @@ export class ProductComponent implements OnInit {
       (this.products.length > 0) ? this.show = false : this.show = true;
       this.defineView(this.localStorageService.getToken())
       console.log(this.products);
-    },
-      error => console.log(error)
-    )
+    });
   }
 
   defineView(token: string): void {
@@ -71,4 +69,17 @@ export class ProductComponent implements OnInit {
 
     return this.roles[1]
   }
+
+  addToWishlist (product: ProductResponse) {
+    this.wishlist.push(product);
+    this.localStorageService.setItem('wishlist', JSON.stringify(this.wishlist));
+    console.log("se agrego el producto.", this.wishlist);
+  }
+
+  addToCarrito (product: ProductResponse) {
+    this.carrito.push(product);
+    this.localStorageService.setItem('carrito', JSON.stringify(this.carrito));
+    console.log("se agrego el producto.", this.carrito);
+  }
+
 }

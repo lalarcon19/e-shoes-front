@@ -1,20 +1,14 @@
 export interface SignupRequest {
-    name: String,
-    lastname: String,
-    email: String,
-    documentType: DocumentType,
-    document: String,
-    address: String,
-    username: String,
-    password: String,
-    rol: Roles
+    name: string,
+    lastname: string,
+    email: string,
+    documentType: string,
+    document: string,
+    address: string,
+    password: string,
 }
 
 export enum DocumentType {
-    CC,
-    CE
-}
-
-export interface Roles {
-    roles: String[]
+    CC = "CC",
+    CE = "CE"
 }

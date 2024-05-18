@@ -15,6 +15,11 @@ export class HeaderComponent implements OnInit {
   user: UserResponse;
   showMenu: boolean = false
 
+  name = (name: string) => {
+    let names = name.split(' ')   
+    return names.length > 3 ? names[0] + " " + names[2] : names[0] + " " + names[1]  
+  }
+
 
   constructor(
     private userService: UserService,
@@ -37,7 +42,6 @@ export class HeaderComponent implements OnInit {
       console.log(res);
       this.user = res;
       console.log(this.user);
-      
     });
   }
 
