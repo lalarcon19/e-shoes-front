@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-</body>
-</html>
+<app-header></app-header>
+<div class="container">
+  <div class="no-item" *ngIf="!flag">
+    <h1>Aun no hay nada </h1>
+    <p>Agrega un producto a favoritos.</p>
+  </div>
+
+  <div class="item-container" *ngIf="flag">
+    <div class="items" *ngFor="let product of wishlist">
+
+      <div class="img">
+
+      </div>
+
+      <div class="item-info">
+        <span>Nombre: {{product.name}}</span>
+        <span>Precio: {{product.price}}</span>
+        <span>Categoria: {{product.category}}</span>
+      </div>
+
+    </div>
+    
+  </div>
+</div>

@@ -1,5 +1,4 @@
-import { Component, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -13,16 +12,19 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
-
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: 'inicio', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'registrate', component: RegisterComponent },
+  { path: 'registro', component: RegisterComponent },
   { path: 'carrito', component: ShoppinCartComponent },
   { path: 'agregar-producto', component: AddProductComponent },
   { path: 'agregar-categoria', component: CategoryComponent },
   { path: 'productos', component: ProductComponent },
   { path: 'usuario', component: UserComponent },
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: 'metodo-pago', component: UserComponent },
+  { path: 'favoritos', component: FavoriteComponent },
+
+  
   {
     path: "dashboard",
     component: DashboardComponent,

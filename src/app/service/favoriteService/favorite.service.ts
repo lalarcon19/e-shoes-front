@@ -1,27 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Favorite } from 'src/app/models/favorite';
-import { HttpClient } from '@angular/common/http';
+import { FavoriteResponse } from 'src/app/models/favorite';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { ProductResponse } from 'src/app/models/product';
 
-const urlFavorite = "http://localhost:8080/favorite"
+const url = "http://localhost:8080/wishlist"
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
 
-  constructor(private http:HttpClient) { }
+  private headers: HttpHeaders;
+  token = this.localStorageService.getToken()
 
-  public addFavorite(data:any):Observable<Favorite>{
-    return this.http.post<Favorite>(urlFavorite + "/add", data)
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+
+    this.headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.token,
+      'Content-Type': 'application/json'
+    });
   }
-  public getAllFavorite(idUser: number):Observable<Favorite>{
-    return this.http.get<Favorite>(urlFavorite+ `/getAll/${idUser}`)
+
+
+  public getById(id: number): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(url + `/getByName/${id}`);
   }
-  public getByIdFavorite(idUser: number):Observable<Favorite>{
-    return this.http.get<Favorite>(urlFavorite + `/getByIdFavorite/${idUser}`)
+
+  public update(id: number): Observable<ProductResponse> {
+    return this.http.put<ProductResponse>(url, `/update/${id}`)
   }
-  public deleteFavorite(nameProduct: String):Observable<Favorite>{
-    return this.http.delete<Favorite>(urlFavorite + `/deleteProduct/${nameProduct}`)
+
+  public delete(id: number): Observable<ProductResponse> {
+    return this.http.delete<ProductResponse>(url + `/delete/${id}`)
   }
 }
+

@@ -13,4 +13,5 @@ export interface ProductResponse {
   price: number;
   category: CategoryEnum;
   img: String;
+  cantidad: number
 }

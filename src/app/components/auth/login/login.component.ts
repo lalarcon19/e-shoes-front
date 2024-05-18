@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthResponse } from 'src/app/models/auth-response';
-import { LoginRequest } from 'src/app/models/auth-request';
 import { SignupRequest } from 'src/app/models/signup-request';
 import { AuthService } from 'src/app/service/authService/auth.service';
 import { jwtDecode } from 'jwt-decode';
 import { Token } from 'src/app/models/token';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 import { waitForAsync } from '@angular/core/testing';
+import { LoginRequest } from 'src/app/models/auth';
 
 @Component({
   selector: 'app-login',
