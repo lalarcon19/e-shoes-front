@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="add-category">
-    <form class="form" method="post">
+    <form [formGroup]="cetegoryForm" (ngSubmit)="addCategory()"  class="form" method="post">
         <h2>Agregar Categoria</h2>
         <div class="input-group">
             <label for="name">Categoria:</label>
@@ -17,7 +17,7 @@
             <label for="text">Descripcion:</label>
             <input type="text" id="text" name="description" required>
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit">Guardar</button>
     </form>
 
   </div>

@@ -1,1 +1,70 @@
-<p>user works!</p>
+<div class="container" *ngIf="!isAdmin">
+  <!--
+  <div class="btns">
+    <button class="logout" (click)="logout()"
+      style="width: 200px; height: 20px; background-color: rgb(255, 255, 255);">
+      Cerrar sesion
+    </button>
+  </div>
+-->
+  <div class="profile">
+
+    <h1>Informacion del usuario</h1>
+    <p class="p">Nombre: {{ user.name }} {{ user.lastName }} </p>
+    <p class="p">Email: {{ user.email }}</p>
+    <p class="p">Direccion: {{ user.address }}</p>
+    <p class="p">Tipo Documento: {{ user.documentType }}</p>
+    <p class="p">Documento: {{ user.document }}</p>
+
+  </div>
+
+  <div class="payment">
+    <h1>Metodo de pago</h1>
+    <div class="payment-exist" *ngIf="showPayment">
+      <p class="p">{{ payment.franchises }}</p>
+      <p class="p">{{ payment.cardNumber }}</p>
+    </div>
+
+    <div class="payment-no-exist" *ngIf="!showPayment">
+      <p>Aún no tienes un metodo de pago.</p>
+      <button class="btn" (click)="signup()">Añadir</button>
+    </div>
+  </div>
+
+  <div class="checkout">
+    <h1>Facturas</h1>
+    <button class="btn"><a href="checkout">Ver todos</a></button>
+  </div>
+</div>
+
+<div class="container-table" *ngIf="isAdmin">
+  <h1>Lista de usuarios</h1>
+  <table class="table">
+
+    <tr>
+      <th> ID </th>
+      <th> Nombre </th>
+      <th> Email </th>
+      <th> Direccion </th>
+      <th> Tipo Documento </th>
+      <th> Documento </th>
+      <th><button class="eliminar"><i class="fa-solid fa-trash"></i></button></th>
+    </tr>
+
+    <tr *ngFor="let user of listUser">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }} {{ user.lastName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.address }}</td>
+      <td>{{ user.documentType }}</td>
+      <td>{{ user.document }}</td>
+      <td><button class="eliminar"><i class="fa-solid fa-trash "></i></button></td>
+    </tr>
+
+  </table>
+
+  <div *ngIf="show" class="registro-span">
+    <span>No hay registros</span>
+  </div>
+
+</div>

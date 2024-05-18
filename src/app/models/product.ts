@@ -1,9 +1,16 @@
+import { CategoryEnum } from "./category";
 
-export interface Product {
-  idProduct:number;
-  name:String;
-  price:number;
-  category_id:number;
-  user_final:number;
+export interface ProductRequest {
+  name: String;
+  price: number;
+  category: CategoryEnum;
   img:String;
+}
+
+export interface ProductResponse {
+  id: number;
+  name: String;
+  price: number;
+  category: CategoryEnum;
+  img: String;
 }

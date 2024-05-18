@@ -1,16 +1,12 @@
+import { PaymentResponse } from "./payment";
 
-export interface User {
-
-  name:String;
-  lastName:String;
-  email:String;
-  typeDocument:String;
-  document:String;
-  address:String;
-  userName:String;
-  password:String;
-  isEnable:boolean;
-  accountNoExpired:boolean;
-  accountNoLocked:boolean;
-  credentialNoExpire:boolean;
+export interface UserResponse {
+  id:number
+  address: string;
+  document: string;
+  email: string;
+  lastName: string
+  name: string;
+  documentType: string;
+  payment: PaymentResponse
 }

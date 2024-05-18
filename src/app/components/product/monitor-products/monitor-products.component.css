@@ -11,7 +11,7 @@ body{
 }
 .btn{
   display: inline-block;
-  background-color:rgb(217, 179, 37);
+  background-color: rgb(237, 228, 97);
   padding: 10px 20px;
   margin: 15vh 2px 30px 40px;
   font-size: 16px;
@@ -40,7 +40,7 @@ a{
 }
 
 th{
- background-color:rgb(217, 179, 37);
+  background-color: rgb(237, 228, 97);
 }
 
 .edit{

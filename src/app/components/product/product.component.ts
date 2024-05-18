@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/models/product';
-
+import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
+import { Category, CategoryEnum } from 'src/app/models/category';
+import { ProductRequest, ProductResponse } from 'src/app/models/product';
+import { Token } from 'src/app/models/token';
+import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
+import { ProductService } from 'src/app/service/productService/product.service';
 
 @Component({
   selector: 'app-product',
@@ -8,31 +13,62 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  directory: string = '../home/img/';
 
-  checkout: Product[] = [];
-  products: Product[] = [];
+  checkout: ProductResponse[] = [];
+  products: ProductResponse[] = [];
 
-  product: Product = {
-    idProduct: 1,
-    name: 'producto 1',
-    price: 12345,
-    category_id: 1,
-    user_final: 1,
-    img: 'img1',
-  };
+  show: boolean = true;
+  isAdmin: boolean = false;
+  flag: boolean = false
+  path: string = this.router.url;
+  roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
 
-  constructor() {}
-  ngOnInit() {}
 
-  getImgOfProduct(input: string) {
-    let img: String = this.directory + input;
-    return img;
+  constructor(private productService: ProductService, 
+    private localStorageService: LocalStorageService,
+    private router: Router) { }
+
+  ngOnInit() {
+    this.getProduct();
   }
 
-  addProductToCheckout(product: Product) {
-      this.checkout.push(product);
+  getProduct() {   
+    this.productService.getAllProducts().subscribe(res => {
+      this.products = res;
+      (this.products.length > 0) ? this.show = false : this.show = true;
+      this.defineView(this.localStorageService.getToken())
+      console.log(this.products);
+    },
+      error => console.log(error)
+    )
   }
 
-  openModal() {}
+  defineView(token: string): void {
+    console.log(this.path);
+    let role = this.decodeJwt(token);
+
+    if (role === this.roles[0] && this.path != '/productos') {
+      this.isAdmin = true
+      this.flag = true
+    } else {
+      this.flag == false
+      this.isAdmin = false
+    }
+  }
+
+  decodeJwt(token: string): String {
+    let decodedToken: Token = jwtDecode(token)
+    let role = this.extractRole(decodedToken.authorities.split(','))
+    return role;
+  }
+
+  extractRole(input: string[]): string {
+    const role = input.find(p => p.includes(this.roles[0]))
+
+    if (role === this.roles[0]) {
+      return this.roles[0]
+    }
+
+    return this.roles[1]
+  }
 }

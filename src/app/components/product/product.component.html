@@ -1,104 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <section class="contenedor">
-      <!-- Contenedor de elementos -->
-      <div>
-        <h1>Lista de productos</h1>
+<section class="contenedor">
+  <!-- Contenedor de elementos -->
+  <div>
+    <h1>Lista de productos</h1>
+  </div>
+  <div class="contenedor-items" *ngIf="!isAdmin && !flag">
+    <div class="item" *ngFor="let product of products">
+
+      <img src="https://i.pinimg.com/564x/36/fc/12/36fc12635f8ebdcb9cc49083ff28993c.jpg" alt="" class="img-item" />
+      <span class="titulo-item">{{ product.name }}</span>
+      <span class="precio-item">$ {{ product.price }}</span>
+      <span class="category-item"></span>
+      <div class="btns">
+        <button class="boton-item">Comprar</button>
+        <span class="icono"><i class="fas fa-shopping-cart">Agregar</i></span>
       </div>
-      <div class="contenedor-items">
-        <div class="item" *ngFor="let product of products">
-          <span class="titulo-item">{{ product.name }}</span>
-          <img src="../home/img/{product.img}}" alt="" class="img-item" />
-          <span class="precio-item">{{ product.price }}</span>
-          <button class="boton-item">Agregar</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">English Horse</span>
-          <img
-            src="https://i.pinimg.com/564x/44/34/a9/4434a929154b28e4b4b83260ebeaf0e9.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$25.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">Knock Nap</span>
-          <img
-            src="https://i.pinimg.com/564x/71/90/00/7190000b7166d295cb59ef1afa59f934.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$35.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">La Night</span>
-          <img
-            src="https://i.pinimg.com/736x/28/b3/ff/28b3ffd81c8a59cb758902cd58c42c6e.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$18.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">Silver All</span>
-          <img
-            src="https://i.pinimg.com/736x/6a/7b/b2/6a7bb2f42c34bfe97f0900702dcf587b.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$32.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">Skin Glam</span>
-          <img
-            src="https://i.pinimg.com/564x/9f/9f/b7/9f9fb74a7b1ac9af1d134b87c0011a82.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$18.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">Midimix</span>
-          <img
-            src="https://i.pinimg.com/564x/f5/39/50/f539504b26aac80af6ec11861fc94507.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$54.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">Sir Blue</span>
-          <img
-            src="https://i.pinimg.com/564x/36/fc/12/36fc12635f8ebdcb9cc49083ff28993c.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$32.000</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-        <div class="item">
-          <span class="titulo-item">Middlesteel</span>
-          <img
-            src="https://i.pinimg.com/736x/d7/71/34/d771341de85d97ff633bcb20ceb0b37e.jpg"
-            alt=""
-            class="img-item"
-          />
-          <span class="precio-item">$42.800</span>
-          <button class="boton-item">Agregar al Carrito</button>
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
+    </div>
+
+  </div>
+
+  <div class="container-table" *ngIf="isAdmin && flag">
+    <table class="table">
+
+      <tr>
+        <th><input type="checkbox"></th>
+        <th> ID </th>
+        <th> Nombre </th>
+        <th> Precio </th>
+        <th> Categoria </th>
+        <th> img </th>
+        <th><button class="eliminar"><i class="fa-solid fa-trash"></i></button></th>
+      </tr>
+
+      <tr *ngFor="let product of products">
+        <td>
+          <input type="checkbox">
+        </td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.img }}</td>
+        <td><button class="eliminar"><i class="fa-solid fa-trash "></i></button></td>
+      </tr>
+
+    </table>
+
+    <div *ngIf="show" class="registro-span">
+      <span>No hay registros</span>
+    </div>
+
+  </div>
+</section>
