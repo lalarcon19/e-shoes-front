@@ -1,1 +1,24 @@
-<p>update-payment works!</p>
+<div class="container">
+    <form action="POST" class="payment-form" [formGroup]="paymentForm" (ngSubmit)="update()">
+        <h2>Agregar metodo de pago</h2>
+        <div class="input-group">
+            <label for="cardNumber">Numero:</label>
+            <input type="number" maxlength="16" id="cardNumber" name="cardNumber" required formControlName="cardNumber">
+        </div>
+        <div class="input-group">
+            <label for="franchise">Franquicia</label>
+            <select name="franchise" id="franchise" formControlName="franchise">
+                <option [value]="franchise[0]">{{franchise[0]}}</option>
+                <option [value]="franchise[1]">{{franchise[1]}}</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="paymentMethod">Metodo</label>
+            <select name="paymentMethod" id="paymentMethod" formControlName="paymentMethod">
+                <option [value]="method[0]">{{method[0]}}</option>
+                <option [value]="method[1]">{{method[1]}}</option>
+            </select>
+        </div>
+        <button class="btn">Enviar</button>
+    </form>
+</div>

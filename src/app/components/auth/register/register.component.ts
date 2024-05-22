@@ -65,9 +65,7 @@ export class RegisterComponent {
 
   }
 
-  signup() {
-    console.log('isvalid: ', this.signupform.valid);
-    
+  signup() {    
     if (this.signupform.valid) {
       const formData = this.signupform.value
 
