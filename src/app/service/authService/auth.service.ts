@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SignupRequest } from 'src/app/models/signup-request';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserResponse } from 'src/app/models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage/local-storage.service';
@@ -35,10 +34,9 @@ export class AuthService {
   }
   
   logout(): void {
-    
-    this.localStorageService.removeItem(['token', 'wishlist'])
+    this.localStorageService.removeItem(['token', 'wishlist', 'carrito'])
     this.router.navigate(['inicio'])
-    
+
   }
 
   public login(data: LoginRequest): Observable<AuthResponse> {

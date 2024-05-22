@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   listUser: UserResponse[] = [];
   roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
   user: UserResponse;
-  isAdmin: boolean = true
+  isAdmin: boolean = false
   path: string = this.router.url;
   payment: PaymentResponse;
   show: boolean = true
@@ -42,11 +42,10 @@ export class UserComponent implements OnInit {
     this.userService.getById(this.getUserId()).subscribe(user => {
       console.log(user);
       this.user = user;
-      if (user.payment == null) {
-        this.showPayment = true
+      if (user.payment.id === 0) {
+        this.showPayment = false
       }  else {
         this.payment = user.payment
-        this.showPayment = false
       }
     });
   }
@@ -56,12 +55,11 @@ export class UserComponent implements OnInit {
       console.log(res);
       this.listUser = res;
       (this.listUser.length > 0) ? this.show = false : this.show = true;
-    },
-      error => console.log(error)
-    );
+    });
   }
 
-  signup() {
+  paymentCreation() {
+    this.router.navigate(['metodo-pago'])
     console.log("se hizo click");
   }
 
@@ -73,9 +71,7 @@ export class UserComponent implements OnInit {
   deleteUser(document: String): void {
     this.userService.deleteUser(document).subscribe(res => {
       console.log(res);
-    },
-      err => console.error(err)
-    );
+    });
   }
 
   logout(): void {
@@ -90,7 +86,6 @@ export class UserComponent implements OnInit {
       this.isAdmin = true
       this.getAllUser()
     } else {
-      this.isAdmin = false
       this.getUserInfo()
     }
   }

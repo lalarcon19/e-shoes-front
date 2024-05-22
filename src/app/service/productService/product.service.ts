@@ -27,7 +27,7 @@ export class ProductService {
   }
 
   public getAllProducts(): Observable<ProductResponse[]> {
-    return this.http.get<ProductResponse[]>(urlProduct + "/getAll", { headers: this.headers })
+    return this.http.get<ProductResponse[]>(urlProduct + "/getAll")
   }
 
   public getByName(name: String): Observable<ProductResponse> {

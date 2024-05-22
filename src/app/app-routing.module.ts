@@ -10,6 +10,7 @@ import { AddProductComponent } from './components/product/add-product/add-produc
 import { CategoryComponent } from './components/category/category.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserComponent } from './components/user/user.component';
+import { CreatePaymentComponent } from './components/payments/create-payment/create-payment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -21,9 +22,8 @@ const routes: Routes = [
   { path: 'agregar-categoria', component: CategoryComponent },
   { path: 'productos', component: ProductComponent },
   { path: 'usuario', component: UserComponent },
-  { path: 'metodo-pago', component: UserComponent },
+  { path: 'metodo-pago', component: CreatePaymentComponent },
   { path: 'favoritos', component: FavoriteComponent },
-
   
   {
     path: "dashboard",

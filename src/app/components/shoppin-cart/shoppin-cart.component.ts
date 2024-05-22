@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { ProductResponse } from 'src/app/models/product';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
@@ -8,14 +8,14 @@ import { LocalStorageService } from 'src/app/service/local-storage/local-storage
   templateUrl: './shoppin-cart.component.html',
   styleUrls: ['./shoppin-cart.component.css']
 })
-export class ShoppinCartComponent  implements OnInit{
+export class ShoppinCartComponent implements OnInit {
 
   carrito: ProductResponse[] = [];
   flag: boolean = true;
   total: number = 0;
-  cantidad: number = 0
 
-  constructor( private localStorageService: LocalStorageService ) {
+
+  constructor(private localStorageService: LocalStorageService) {
 
   }
 
@@ -24,7 +24,7 @@ export class ShoppinCartComponent  implements OnInit{
 
   }
 
-  getProduct(){
+  getProduct() {
     let productsList = this.localStorageService.getProductsCarrito();
     if (productsList.length === 0) {
       this.flag = false
@@ -33,18 +33,16 @@ export class ShoppinCartComponent  implements OnInit{
     }
   }
 
-  addCantidad() {
-    this.carrito.map(c => {
-      this.cantidad++;
-      this.total = this.total += c.price;
-    })
+  addCantidad(product: ProductResponse) {
+    product.cantidad = 1
+    product.cantidad++
+    this.total = this.total += product.price;
+    console.log(product.cantidad);
   }
 
-  reducirCantidad() {
-    this.carrito.map(c => {
-      this.cantidad--;
-      this.total = this.total -= c.price;
-    })
+  reducirCantidad(product: ProductResponse) {
+    let cantidad: number = 1
+
   }
 }
 

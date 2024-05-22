@@ -1,0 +1,60 @@
+.container {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .payment-form {
+    width: 50%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.btn {
+    margin-top: 3em;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 10px;
+    background-color: rgb(237, 228, 97);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background-color: rgba(255, 245, 105, 0.834);
+}
+
+a {
+    text-decoration: none;
+}

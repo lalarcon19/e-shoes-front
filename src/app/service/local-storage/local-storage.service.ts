@@ -23,6 +23,7 @@ export class LocalStorageService {
 
   getToken(): string {
     let token = localStorage.getItem('token');
+        
     if (token != null) {
       token = token.substring(1, token.length - 1)
     } else {
