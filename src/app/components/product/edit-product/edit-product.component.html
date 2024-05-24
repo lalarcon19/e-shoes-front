@@ -3,9 +3,19 @@
   <form
     class="login-form"
     [formGroup]="productForm"
-    (ngSubmit)="addProduct()"
+    (ngSubmit)="updateProduct()"
   >
-    <h2>Agregar producto</h2>
+    <h2>Editar producto</h2>
+    <div class="input-group">
+      <label for="name">id:</label>
+      <input
+        type="text"
+        id="id"
+        name="id"
+        required
+        formControlName="id"
+      />
+    </div>
     <div class="input-group">
       <label for="name">Nombre:</label>
       <input

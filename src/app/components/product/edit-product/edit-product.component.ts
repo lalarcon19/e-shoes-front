@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
-import { ProductService } from 'src/app/service/productService/product.service';
-import { Response } from 'src/app/models/response';
-import { ProductRequest, ProductResponse } from 'src/app/models/product';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Token } from 'src/app/models/token';
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryEnum } from 'src/app/models/category';
+import { ProductService } from 'src/app/service/productService/product.service';
+import { ProductRequest, ProductResponse, UpdateProductRequest } from 'src/app/models/product';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css'],
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css'],
 })
-export class AddProductComponent {
+export class EditProductComponent {
   productForm: FormGroup;
 
   category = Object.values(CategoryEnum);
@@ -24,6 +23,7 @@ export class AddProductComponent {
     private formBuilder: FormBuilder,
     ) {
     this.productForm = formBuilder.group ({
+      id: ['', [Validators.required]],
       name: ['', [Validators.required]],
       price: ['', [Validators.required]],
       category: ['', [Validators.required]],
@@ -31,15 +31,16 @@ export class AddProductComponent {
     })
   }
 
-  addProduct(): void {
+  updateProduct(): void {
     const formData = this.productForm.value
+    const id: number = formData.id
     let product: ProductRequest = {
       name: formData.name,
       price: formData.price,
       category: formData.category,
       img: formData.img,
     };
-    this.productService.createProduct(product).subscribe({
+    this.productService.updateProduct(id, product).subscribe({
       next: (res: ProductResponse) => {},
       error: (error) => {
         console.error(error);
