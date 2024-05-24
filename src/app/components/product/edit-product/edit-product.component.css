@@ -1,9 +1,8 @@
-/* Asegúrate de que la familia de fuentes y el color de fondo se apliquen al cuerpo */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
-  padding: 0;
+.add-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ /* Ocupar toda la altura de la ventana */
 }
 
 h2 {
@@ -12,14 +11,6 @@ h2 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-
-.add-product {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- /* Ocupar toda la altura de la ventana */
-}
-
 /* Estilizar el formulario */
 .form {
   background-color: #fff;
@@ -50,6 +41,7 @@ button {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 20px;
+  text-transform: uppercase;
 }
 
 /* Estilizar el botón */
@@ -66,3 +58,4 @@ button {
 button:hover {
   background-color: rgba(176, 166, 26, 0.834);
 }
+
