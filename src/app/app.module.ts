@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
-import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -26,9 +25,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreatePaymentComponent } from './components/payments/create-payment/create-payment.component';
 import { UpdatePaymentComponent } from './components/payments/update-payment/update-payment.component';
-import { EditProductComponent } from './components/product/edit-product/edit-product.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
 
 
 export function jwtOptionsFactory() {
@@ -59,7 +55,6 @@ export function jwtOptionsFactory() {
     DashboardComponent,
     CreatePaymentComponent,
     UpdatePaymentComponent,
-    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,9 +66,6 @@ export function jwtOptionsFactory() {
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    CommonModule,
-    MatFormFieldModule,
-    MatSelectModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,

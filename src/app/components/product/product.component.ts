@@ -6,10 +6,7 @@ import { ProductRequest, ProductResponse } from 'src/app/models/product';
 import { Token } from 'src/app/models/token';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 import { ProductService } from 'src/app/service/productService/product.service';
-import { MatDialog } from '@angular/material/dialog';
-import { AddProductComponent } from './add-product/add-product.component';
-import { CategoryComponent } from '../category/category.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -27,16 +24,15 @@ export class ProductComponent implements OnInit {
   path: string = this.router.url;
   roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
 
-  constructor(private productService: ProductService,
+  constructor(private productService: ProductService, 
     private localStorageService: LocalStorageService,
-    private router: Router,
-    public dialog: MatDialog,) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.getProduct();
   }
 
-  getProduct() {
+  getProduct() {   
     this.productService.getAllProducts().subscribe(res => {
       this.products = res;
       (this.products.length > 0) ? this.show = false : this.show = true;
@@ -84,32 +80,6 @@ export class ProductComponent implements OnInit {
     this.carrito.push(product);
     this.localStorageService.setItem('carrito', JSON.stringify(this.carrito));
     console.log("se agrego el producto.", this.carrito);
-  }
-
-  //modal components
-  openAddProduct(): void {
-    const dialogRef = this.dialog.open(AddProductComponent, {
-    })
-  }
-  openCategory():void{
-    const dialogRef = this.dialog.open(CategoryComponent, {
-    })
-  }
-  openEditProduct():void{
-    const dialogRef = this.dialog.open(EditProductComponent, {
-    })
-  }
-
-  deleteProduct(idProduct:number):void {
-    this.productService.deleteProduct(idProduct).subscribe(res => {
-    console.log('producto eliminado', res);
-    alert("Se elimino el producto.");
-    this.router.navigate([this.path])
-    },
-    err=>{
-    console.error('Error al eliminar el producto');
-    }
-    );
   }
 
 }

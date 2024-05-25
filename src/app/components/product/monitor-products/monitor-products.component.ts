@@ -3,12 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { CategoryComponent } from '../../category/category.component';
 import { ProductService } from 'src/app/service/productService/product.service';
-import { ProductRequest } from 'src/app/models/product';
-import { Router } from '@angular/router';
-import { ProductResponse } from 'src/app/models/product';
-import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
-import { Token } from 'src/app/models/token';
-import { jwtDecode } from 'jwt-decode';
+import { Product } from 'src/app/models/product';
 
 
 @Component({
@@ -18,19 +13,11 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class MonitorProductsComponent implements OnInit{
 
-  products: ProductResponse[] = [];
-  constructor(public dialog: MatDialog,
-    private productService:ProductService,
-    private router:Router,
-    private localStorageService: LocalStorageService,){}
-
-  show: boolean = true;
-  isAdmin: boolean = false;
-  flag: boolean = false
-  path: string = this.router.url;
-  roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
+  listProduct: Product[] = [];
+  constructor(public dialog: MatDialog, private productService:ProductService){}
 
   ngOnInit(): void {
+
   }
 
   openAddProduct(): void {
@@ -42,38 +29,19 @@ export class MonitorProductsComponent implements OnInit{
     })
   }
 
-  defineView(token: string): void {
-    console.log(this.path);
-    let role = this.decodeJwt(token);
-  }
-
-  decodeJwt(token: string): String {
-    let decodedToken: Token = jwtDecode(token)
-    let role = this.extractRole(decodedToken.authorities.split(','))
-    return role;
-  }
-
-  extractRole(input: string[]): string {
-    const role = input.find(p => p.includes(this.roles[0]))
-
-    if (role === this.roles[0]) {
-      return this.roles[0]
-    }
-
-    return this.roles[1]
-  }
-
-  getProduct() {
-    this.productService.getAllProducts().subscribe(res => {
-      this.products = res;
-      (this.products.length > 0) ? this.show = false : this.show = true;
-      this.defineView(this.localStorageService.getToken())
-      console.log(this.products);
+  getAllProducts(): void {
+    this.productService.getAllProducts().subscribe(res=> {
+      console.log(res);
+      this.listProduct= res;
     });
   }
+  updateProduct(idProduct:number) {
+    this.productService.updateProduct(idProduct).subscribe(res =>{
+    })
+  }
 
-  deleteProduct(idProduct:number):void {
-    this.productService.deleteProduct(idProduct).subscribe(res => {
+  deleteProduct(name:String):void {
+    this.productService.deleteProduct(name).subscribe(res => {
     console.log('producto eliminado', res);
     },
     err=>{
@@ -82,5 +50,6 @@ export class MonitorProductsComponent implements OnInit{
     );
   }
 
-}
 
+
+}

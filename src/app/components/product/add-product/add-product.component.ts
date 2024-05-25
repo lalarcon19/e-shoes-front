@@ -1,49 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validator} from '@angular/forms';
 import { ProductService } from 'src/app/service/productService/product.service';
 import { Response } from 'src/app/models/response';
-import { ProductRequest, ProductResponse } from 'src/app/models/product';
-import { Router } from '@angular/router';
-import { Token } from 'src/app/models/token';
-import { jwtDecode } from 'jwt-decode';
-import { CategoryEnum } from 'src/app/models/category';
+import { ProductResponse } from 'src/app/models/product';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css'],
+  styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
-  productForm: FormGroup;
+export class AddProductComponent implements OnInit{
+  productForm = new FormGroup({
+    idProduct:new FormControl(''),
+    name:new FormControl(''),
+    price:new FormControl(''),
+    category_id:new FormControl(''),
+    img:new FormControl('')
+  });
+constructor(private productService:ProductService){}
+  ngOnInit(): void {
 
-  category = Object.values(CategoryEnum);
-
-
-  constructor(private productService: ProductService,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    ) {
-    this.productForm = formBuilder.group ({
-      name: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      img: ['', [Validators.required]]
-    })
   }
 
-  addProduct(): void {
-    const formData = this.productForm.value
-    let product: ProductRequest = {
-      name: formData.name,
-      price: formData.price,
-      category: formData.category,
-      img: formData.img,
-    };
-    this.productService.createProduct(product).subscribe({
-      next: (res: ProductResponse) => {},
-      error: (error) => {
-        console.error(error);
-      },
-    });
+  addProduct():void{
+    let product={
+      idProduct:this.productForm.get('idProduct')?.value,
+      name:this.productForm.get('name')?.value,
+      price:this.productForm.get('price')?.value,
+      category_id:this.productForm.get('category_id')?.value,
+      img:this.productForm.get('img')?.value,
+    }
+   this.productService.createProduct(product).subscribe({
+    next: (res: ProductResponse) => {
+    },
+    error: (error) =>{
+      console.error(error)
+    }
+   });
   }
 }

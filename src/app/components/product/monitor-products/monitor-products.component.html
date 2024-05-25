@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Monitoreo productos</title>
+</head>
+  <body>
+    <div class="botones">
+      <button type="button" class="btn" (click)="openAddProduct()">
+      <i class="fas fa-plus"></i>Agregar producto
+      </button>
+      <button type="button" class="btn" (click)="openCategory()">
+      <i class="fas fa-plus"></i>Agregar Categoria
+      </button>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <th scope="col">ID</th>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">IMAGEN</th>
+        <th scope="col">CATEGORIA</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">MOVIMIENTOS</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of listProduct">
+          <td>{{product.idProduct}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.category_id}}</td>
+          <td></td>
+          <td scope="col">
+            <button class="btn btn-succes" (click)="deleteProduct(product.name)"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" (click)="updateProduct(product.idProduct)"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
