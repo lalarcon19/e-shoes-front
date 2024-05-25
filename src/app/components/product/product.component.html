@@ -1,5 +1,6 @@
-<app-header *ngIf="!isAdmin"></app-header>
-
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
 <section class="contenedor">
   <!-- Contenedor de elementos -->
   <div>
@@ -22,28 +23,32 @@
   </div>
 
   <div class="container-table" *ngIf="isAdmin && flag">
+    <div class="botones">
+      <button type="button" class="btn" (click)="openAddProduct()">
+        <i class="fas fa-plus"></i>Agregar producto
+      </button>
+      <button type="button" class="btn" (click)="openCategory()">
+        <i class="fas fa-plus"></i>Agregar Categoria
+      </button>
+    </div>
     <table class="table">
 
       <tr>
-        <th><input type="checkbox"></th>
         <th> ID </th>
         <th> Nombre </th>
         <th> Precio </th>
         <th> Categoria </th>
-        <th> img </th>
-        <th><button class="eliminar"><i class="fa-solid fa-trash"></i></button></th>
+        <th> Acciones </th>
       </tr>
 
       <tr *ngFor="let product of products">
-        <td>
-          <input type="checkbox">
-        </td>
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.category }}</td>
-        <td>{{ product.img }}</td>
-        <td><button class="eliminar"><i class="fa-solid fa-trash "></i></button></td>
+        <td> <button class="icono" (click)="openEditProduct()"><i class="fas fa-edit"></i></button>
+          <button class="icono" (click)="deleteProduct(product.id)"><i class="fas fa-trash-alt"></i></button></td>
+
       </tr>
 
     </table>

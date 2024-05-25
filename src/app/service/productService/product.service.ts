@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProductResponse } from 'src/app/models/product';
+import { ProductRequest, ProductResponse, UpdateProductRequest } from 'src/app/models/product';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
 const urlProduct = "http://localhost:8080/product"
@@ -23,22 +23,22 @@ export class ProductService {
    }
 
   public createProduct(data: any): Observable<ProductResponse> {
-    return this.http.post<ProductResponse>(urlProduct + "/create", data);
+    return this.http.post<ProductResponse>(urlProduct + "/create", data, { headers: this.headers });
   }
 
   public getAllProducts(): Observable<ProductResponse[]> {
-    return this.http.get<ProductResponse[]>(urlProduct + "/getAll")
+    return this.http.get<ProductResponse[]>(urlProduct + "/getAll", { headers: this.headers })
   }
 
   public getByName(name: String): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(urlProduct + `/getByName/${name}`);
+    return this.http.get<ProductResponse>(urlProduct + `/getByName/${name}`, { headers: this.headers });
   }
 
-  public updateProduct(idProduct: number): Observable<ProductResponse> {
-    return this.http.put<ProductResponse>(urlProduct, `/update/${idProduct}`)
+  public updateProduct(idProduct: number, data: ProductRequest): Observable<ProductResponse> {
+    return this.http.put<ProductResponse>(urlProduct + `/update/${idProduct}`, data, { headers: this.headers })
   }
 
-  public deleteProduct(id: number): Observable<ProductResponse> {
-    return this.http.delete<ProductResponse>(urlProduct + `/delete/${id}`)
+  public deleteProduct(id: number) {
+    return this.http.delete(urlProduct + `/delete/${id}`, { headers: this.headers })
   }
 }

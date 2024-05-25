@@ -102,7 +102,7 @@
   margin: 1.1em 0;
   display: flex;
   justify-content: flex-start;
-  align-items: center; 
+  align-items: center;
   width: 90%;
 }
 
@@ -136,6 +136,7 @@ h1 {
 th {
   text-transform: uppercase;
   font-family: 'DM Sans', sans-serif;
+  background-color: rgb(237, 228, 97);
 }
 
 
@@ -145,17 +146,18 @@ th, td {
   height: 3.5em;
 }
 
-td .eliminar:hover {
+td .icono:hover {
   cursor: pointer;
 }
 
-.eliminar {
+.icono{
   width: auto;
   height: 100%;
   border: none;
   font-size: 2em;
-
+  margin-left: 5%;
 }
+
 
 .registro-span {
   margin-top: 1em;
@@ -163,3 +165,24 @@ td .eliminar:hover {
   font-size: 3em;
   text-transform: uppercase;
 }
+
+.botones{
+  display: flex;
+  justify-content:flex-end;
+  margin-right: 7vw;
+}
+
+.btn{
+  display: inline-block;
+  background-color: rgb(237, 228, 97);
+  padding: 10px 20px;
+  margin: 15vh 2px 30px 40px;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: none;
+}
+
+

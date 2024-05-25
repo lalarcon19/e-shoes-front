@@ -14,7 +14,7 @@ const url = "http://localhost:8080/user/auth"
 })
 
 export class AuthService {
-  
+
   constructor(private http: HttpClient,
     private jwtHelper: JwtHelperService,
     private localStorageService: LocalStorageService,
@@ -32,7 +32,7 @@ export class AuthService {
   signup(data: SignupRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(url + "/signup", data)
   }
-  
+
   logout(): void {
     this.localStorageService.removeItem(['token', 'wishlist', 'carrito'])
     this.router.navigate(['inicio'])
