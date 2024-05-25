@@ -40,12 +40,13 @@ export class UserComponent implements OnInit {
 
   getUserInfo() {
     this.userService.getById(this.getUserId()).subscribe(user => {
-      console.log(user);
       this.user = user;
-      if (user.payment.id === 0) {
+      this.payment = user.payment[0];
+
+      if (this.payment.id === 0) {
         this.showPayment = false
       }  else {
-        this.payment = user.payment
+        this.payment = this.user.payment[0]
       }
     });
   }

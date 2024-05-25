@@ -14,7 +14,7 @@
     <div class="login-section" (mouseenter)="showMenu = true" (mouseleave)="showMenu = false">
       <a href="login" *ngIf="!flag" class="text"><span class="icono"><i class="fas fa-user-circle"></i></span> Login</a>
     </div>
-    <a href="usuario" class="text" *ngIf="flag" style="color: black;"><span class="icono"><i class="fas fa-user-circle"></i></span><p>{{ name(user.name + " " + user.lastName)}}</p></a>
+    <a href="usuario" class="text" *ngIf="flag" style="color: black;"><span class="icono"><i class="fas fa-user-circle"></i></span><p>{{ name(userName)}}</p></a>
     <span class="icono"><i class="fas fa-heart"></i></span>
     <a href="favoritos" class="text">Favoritos</a>
     <span class="icono"><i class="fas fa-shopping-cart"></i></span>

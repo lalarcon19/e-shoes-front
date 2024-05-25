@@ -1,3 +1,4 @@
+<app-header></app-header>
 
 <div class="container">
   <div class="no-item" *ngIf="!flag">
@@ -16,9 +17,13 @@
         <span>Nombre: {{product.name}}</span>
         <span>Precio: {{product.price}}</span>
         <span>Categoria: {{product.category}}</span>
+        <div class="btn-container">
+          <button class="btn" (click)="deleteWishList(product)">Borrar</button>
+          <button class="btn">Checkout</button>
+        </div>
       </div>
 
     </div>
-    
+
   </div>
 </div>
