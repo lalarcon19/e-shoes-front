@@ -8,5 +8,5 @@ export interface UserResponse {
   lastName: string
   name: string;
   documentType: string;
-  payment: PaymentResponse
+  payment: PaymentResponse[]
 }
