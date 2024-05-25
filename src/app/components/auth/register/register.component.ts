@@ -52,7 +52,6 @@ export class RegisterComponent {
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private formBuilder: FormBuilder,
-    private favoriteService: FavoriteService,
     private router: Router) {
 
     this.signupform = this.formBuilder.group({
