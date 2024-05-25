@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from './add-product/add-product.component';
 import { CategoryComponent } from '../category/category.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',

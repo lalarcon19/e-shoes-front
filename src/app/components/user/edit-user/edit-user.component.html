@@ -1,0 +1,76 @@
+<div class="container">
+  <form
+    class="login-form"
+    [formGroup]="userForm"
+    (ngSubmit)="updateUser()"
+  >
+    <h2>Editar usuario</h2>
+    <div class="input-group">
+      <label for="name">id:</label>
+      <input
+        type="text"
+        id="id"
+        name="id"
+        required
+        formControlName="id"
+      />
+    </div>
+    <div class="input-group">
+      <label for="name">Nombre:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        formControlName="name"
+      />
+    </div>
+    <div class="input-group">
+      <label for="name">Email:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        required
+        formControlName="email"
+      />
+    </div>
+    <div class="input-group">
+      <label for="price">direccion:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        required
+        formControlName="address"
+      />
+    </div>
+    <div class="input-group">
+      <label for="">Tipo Documento:</label>
+      <select
+        name="documentType"
+        formControlName="documentType"
+        id="documentType"
+      >
+        <option disabled selected>Seleccionar</option>
+        <option>
+          <select name="tipo_documento" formControlName="documentType" id="tipo_documento" formControlName="documentType">
+            <option disabled selected>Seleccionar</option>
+            <option *ngFor="let doc of documentType" [value]="doc">{{ doc }}</option>
+          </select>
+        </option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="price">Documento</label>
+      <input
+        type="text"
+        id="document"
+        name="document"
+        required
+        formControlName="document"
+      />
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+</div>

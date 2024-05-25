@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/userService/user.service';
-import { UserResponse } from 'src/app/models/user';
+import { UserRequest, UserResponse } from 'src/app/models/user';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/authService/auth.service';
@@ -9,6 +9,9 @@ import { jwtDecode } from 'jwt-decode';
 import { PaymentService } from 'src/app/service/paymentService/payment.service';
 import { CheckoutService } from 'src/app/service/checkoutService/checkout.service';
 import { PaymentResponse } from 'src/app/models/payment';
+import { MatDialog } from '@angular/material/dialog';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -16,6 +19,7 @@ import { PaymentResponse } from 'src/app/models/payment';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
 
   listUser: UserResponse[] = [];
   roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
@@ -29,13 +33,17 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder,) {
+
     this.user = {} as UserResponse
     this.payment = {} as PaymentResponse
   }
 
   ngOnInit(): void {
     this.defineView(this.localStorageService.getToken());
+    this.getAllUser();
   }
 
   getUserInfo() {
@@ -69,9 +77,15 @@ export class UserComponent implements OnInit {
     return token.user_id
   }
 
-  deleteUser(document: String): void {
-    this.userService.deleteUser(document).subscribe(res => {
-      console.log(res);
+  deleteUser(id: number): void {
+    this.userService.deleteUser(id).subscribe(res => {
+      console.log('usuario eliminado', res);
+      alert("Se elimino el usuario");
+      this.router.navigate([this.path])
+    },
+    err=>{
+      console.error('Error al eliminar el usuario')
+      alert('Se produjo un error al eliminar');
     });
   }
 
@@ -106,4 +120,13 @@ export class UserComponent implements OnInit {
 
     return this.roles[1]
   }
+
+  openEditUser():void{
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: "30%",
+      height: "80%"
+    })
+  }
+
+
 }

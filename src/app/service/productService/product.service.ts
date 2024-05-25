@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductRequest, ProductResponse, UpdateProductRequest } from 'src/app/models/product';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
-const urlProduct = "http://localhost:8080/product"
+const urlProduct = "https://eccomerce-shoes.onrender.com/product"
 
 @Injectable({
   providedIn: 'root'

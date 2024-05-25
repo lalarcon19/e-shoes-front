@@ -29,6 +29,7 @@ import { UpdatePaymentComponent } from './components/payments/update-payment/upd
 import { EditProductComponent } from './components/product/edit-product/edit-product.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 
 
 export function jwtOptionsFactory() {
@@ -60,6 +61,7 @@ export function jwtOptionsFactory() {
     CreatePaymentComponent,
     UpdatePaymentComponent,
     EditProductComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
