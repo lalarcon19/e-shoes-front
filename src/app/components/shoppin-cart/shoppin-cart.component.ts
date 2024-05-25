@@ -13,6 +13,7 @@ export class ShoppinCartComponent implements OnInit {
   carrito: ProductResponse[] = [];
   flag: boolean = true;
   total: number = 0;
+  productsList = this.localStorageService.getProductsCarrito();
 
 
   constructor(private localStorageService: LocalStorageService) {
@@ -25,11 +26,10 @@ export class ShoppinCartComponent implements OnInit {
   }
 
   getProduct() {
-    let productsList = this.localStorageService.getProductsCarrito();
-    if (productsList.length === 0) {
+    if (this.productsList.length === 0) {
       this.flag = false
     } else {
-      this.carrito = productsList
+      this.carrito = this.productsList
     }
   }
 
@@ -43,6 +43,18 @@ export class ShoppinCartComponent implements OnInit {
   reducirCantidad(product: ProductResponse) {
     let cantidad: number = 1
 
+  }
+
+  deleteWishList(product: ProductResponse) {
+    if (this.productsList.length === 0) {
+      this.flag = false
+    } else {
+      let index = this.carrito.indexOf(product);
+      if (index > -1) {
+        this.carrito.splice(index, 1);
+        this.localStorageService.setItem('carrito', this.carrito)
+      }
+    }
   }
 }
 

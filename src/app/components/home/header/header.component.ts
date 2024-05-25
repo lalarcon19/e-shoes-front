@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Token } from 'src/app/models/token';
-import { UserResponse } from 'src/app/models/user';
 import { AuthService } from 'src/app/service/authService/auth.service';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 import { UserService } from 'src/app/service/userService/user.service';
@@ -12,7 +11,7 @@ import { UserService } from 'src/app/service/userService/user.service';
 })
 export class HeaderComponent implements OnInit {
   flag: boolean = true
-  user: UserResponse;
+  userName: string = "";
   showMenu: boolean = false
 
   name = (name: string) => {
@@ -25,7 +24,6 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     private localStorageService: LocalStorageService,
     private authService: AuthService) {
-    this.user = {} as UserResponse;
   }
 
   ngOnInit(): void {
@@ -40,8 +38,7 @@ export class HeaderComponent implements OnInit {
   getUserName() {
     this.userService.getById(this.getUserId()).subscribe(res => {
       console.log(res);
-      this.user = res;
-      console.log(this.user);
+      this.userName = res.name + " " + res.lastName;
     });
   }
 

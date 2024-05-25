@@ -1,3 +1,4 @@
+<app-header></app-header>
 
 <div class="container">
     <div class="carrito" id="carrito">
@@ -12,7 +13,9 @@
     
         <div class="carrito-items" *ngIf="flag">
             <div class="carrito-item" *ngFor="let product of carrito">
+
                 <img src="img/boxengasse.png" width="80px" alt="">
+                
                 <div class="carrito-item-detalles">
                     <span class="carrito-item-titulo">{{product.name}}</span>
                     <div class="selector-cantidad">
