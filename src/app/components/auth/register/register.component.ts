@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DocumentType, SignupRequest } from 'src/app/models/signup-request';
 import { AuthService } from 'src/app/service/authService/auth.service';
 import { FavoriteService } from 'src/app/service/favoriteService/favorite.service';
@@ -20,7 +21,7 @@ export class RegisterComponent {
     const control = this.signupform.get('email');
     return control !== null && control.invalid && control.touched;
   };
-  
+
   isEmailRequiredError = () => {
     const control = this.signupform.get('email');
     return control !== null && control.hasError('required');
@@ -35,12 +36,12 @@ export class RegisterComponent {
     const control = this.signupform.get('password');
     return control !== null && control.invalid && control.touched;
   };
-  
+
   isPasswordRequiredError = () => {
     const control = this.signupform.get('password');
     return control !== null && control.hasError('required');
   };
-  
+
   isPasswordMinLengthError = () => {
     const control = this.signupform.get('password');
     return control !== null && control.hasError('minlength');
@@ -51,7 +52,7 @@ export class RegisterComponent {
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private formBuilder: FormBuilder,
-    private favoriteService: FavoriteService) {
+    private router: Router) {
 
     this.signupform = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -65,7 +66,7 @@ export class RegisterComponent {
 
   }
 
-  signup() {    
+  signup() {
     if (this.signupform.valid) {
       const formData = this.signupform.value
 
@@ -84,6 +85,7 @@ export class RegisterComponent {
         res => {
           if (res.status === true) {
             this.localStorageService.setItem('token', res.jwt);
+            this.router.navigate(['inicio'])
           }
         });
     }

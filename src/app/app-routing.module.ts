@@ -11,6 +11,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserComponent } from './components/user/user.component';
 import { CreatePaymentComponent } from './components/payments/create-payment/create-payment.component';
+import { MonitorProductsComponent } from './components/product/monitor-products/monitor-products.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
@@ -24,13 +26,14 @@ const routes: Routes = [
   { path: 'usuario', component: UserComponent },
   { path: 'metodo-pago', component: CreatePaymentComponent },
   { path: 'favoritos', component: FavoriteComponent },
-  
+  { path: 'tabla-productos', component: MonitorProductsComponent},
+
   {
     path: "dashboard",
     component: DashboardComponent,
     children: [
       //Rutas hijas del dashboard
-      { path: 'productos', component: ProductComponent },
+      { path: 'productos', component: ProductComponent},
       { path: 'usuario', component: UserComponent },
       { path: 'category', component: CategoryComponent }
     ]

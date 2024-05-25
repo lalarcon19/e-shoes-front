@@ -3,7 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { CategoryComponent } from '../../category/category.component';
 import { ProductService } from 'src/app/service/productService/product.service';
-import { Product } from 'src/app/models/product';
+import { ProductRequest } from 'src/app/models/product';
+import { Router } from '@angular/router';
+import { ProductResponse } from 'src/app/models/product';
+import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
+import { Token } from 'src/app/models/token';
+import { jwtDecode } from 'jwt-decode';
 
 
 @Component({
@@ -13,11 +18,19 @@ import { Product } from 'src/app/models/product';
 })
 export class MonitorProductsComponent implements OnInit{
 
-  listProduct: Product[] = [];
-  constructor(public dialog: MatDialog, private productService:ProductService){}
+  products: ProductResponse[] = [];
+  constructor(public dialog: MatDialog,
+    private productService:ProductService,
+    private router:Router,
+    private localStorageService: LocalStorageService,){}
+
+  show: boolean = true;
+  isAdmin: boolean = false;
+  flag: boolean = false
+  path: string = this.router.url;
+  roles: string[] = ['ROLE_ADMIN', 'ROLE_USER'];
 
   ngOnInit(): void {
-
   }
 
   openAddProduct(): void {
@@ -29,19 +42,38 @@ export class MonitorProductsComponent implements OnInit{
     })
   }
 
-  getAllProducts(): void {
-    this.productService.getAllProducts().subscribe(res=> {
-      console.log(res);
-      this.listProduct= res;
-    });
-  }
-  updateProduct(idProduct:number) {
-    this.productService.updateProduct(idProduct).subscribe(res =>{
-    })
+  defineView(token: string): void {
+    console.log(this.path);
+    let role = this.decodeJwt(token);
   }
 
-  deleteProduct(name:String):void {
-    this.productService.deleteProduct(name).subscribe(res => {
+  decodeJwt(token: string): String {
+    let decodedToken: Token = jwtDecode(token)
+    let role = this.extractRole(decodedToken.authorities.split(','))
+    return role;
+  }
+
+  extractRole(input: string[]): string {
+    const role = input.find(p => p.includes(this.roles[0]))
+
+    if (role === this.roles[0]) {
+      return this.roles[0]
+    }
+
+    return this.roles[1]
+  }
+
+  getProduct() {
+    this.productService.getAllProducts().subscribe(res => {
+      this.products = res;
+      (this.products.length > 0) ? this.show = false : this.show = true;
+      this.defineView(this.localStorageService.getToken())
+      console.log(this.products);
+    });
+  }
+
+  deleteProduct(idProduct:number):void {
+    this.productService.deleteProduct(idProduct).subscribe(res => {
     console.log('producto eliminado', res);
     },
     err=>{
@@ -50,6 +82,5 @@ export class MonitorProductsComponent implements OnInit{
     );
   }
 
-
-
 }
+
