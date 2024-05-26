@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
-const urlUser = "http://localhost:8080/user"
+const urlUser = "https://eccomerce-shoes.onrender.com/user"
 @Injectable({
   providedIn: 'root'
 })

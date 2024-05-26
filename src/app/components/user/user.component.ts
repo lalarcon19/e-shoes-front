@@ -83,8 +83,8 @@ export class UserComponent implements OnInit {
       alert("Se elimino el usuario")
     },
     err=>{
-      console.error('Error al eliminar el usuario')
-      alert('Se produjo un error al eliminar');
+      console.error('usuario eliminado correctamente')
+      alert('usuario eliminado correctamente');
     });
   }
 

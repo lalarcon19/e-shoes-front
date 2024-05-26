@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { AuthResponse, LoginRequest } from 'src/app/models/auth';
 
-const url = "http://localhost:8080/user/auth"
+const url = "https://eccomerce-shoes.onrender.com/user/auth"
 
 @Injectable({
   providedIn: 'root'
