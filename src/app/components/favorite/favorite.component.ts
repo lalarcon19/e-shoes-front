@@ -10,7 +10,7 @@ import { LocalStorageService } from 'src/app/service/local-storage/local-storage
 export class FavoriteComponent implements OnInit {
   wishlist: ProductResponse[] = [];
   flag: boolean = true
-  productsList = this.localStorageService.getProductsToWishlist();
+  productsList = this.localStorageService.getProducts('wishlist');
   constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
@@ -23,6 +23,8 @@ export class FavoriteComponent implements OnInit {
       this.flag = false
     } else {
       this.wishlist = this.productsList
+      console.log(this.wishlist);
+      
     }
 
   }
@@ -35,6 +37,10 @@ export class FavoriteComponent implements OnInit {
       if (index > -1) {
         this.wishlist.splice(index, 1);
         this.localStorageService.setItem('wishlist', this.wishlist)
+      }
+
+      if (this.wishlist.length === 0) {
+        this.flag = false;
       }
     }
   }

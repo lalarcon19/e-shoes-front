@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/userService/user.service';
-import { UserRequest, UserResponse } from 'src/app/models/user';
+import { UserResponse } from 'src/app/models/user';
 import { LocalStorageService } from 'src/app/service/local-storage/local-storage.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/authService/auth.service';
 import { Token } from 'src/app/models/token';
 import { jwtDecode } from 'jwt-decode';
-import { PaymentService } from 'src/app/service/paymentService/payment.service';
-import { CheckoutService } from 'src/app/service/checkoutService/checkout.service';
 import { PaymentResponse } from 'src/app/models/payment';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserComponent } from './edit-user/edit-user.component';
@@ -35,10 +33,9 @@ export class UserComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder,) {
-
-    this.user = {} as UserResponse
-    this.payment = {} as PaymentResponse
+    private formBuilder: FormBuilder,)  {
+    this.user = {} as UserResponse;
+    this.payment = {} as PaymentResponse;
   }
 
   ngOnInit(): void {
@@ -47,15 +44,14 @@ export class UserComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userService.getById(this.getUserId()).subscribe(user => {
+    this.userService.getById(this.getUserId()).subscribe(user => {     
       this.user = user;
-      this.payment = user.payment[0];
-
+      this.payment = this.user.payment;    
       if (this.payment.id === 0) {
         this.showPayment = false
       }  else {
-        this.payment = this.user.payment[0]
-      }
+        this.payment = this.user.payment
+      }      
     });
   }
 
