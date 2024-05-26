@@ -105,7 +105,7 @@ export class ProductComponent implements OnInit {
     this.productService.deleteProduct(idProduct).subscribe(res => {
     console.log('producto eliminado', res);
     alert("Se elimino el producto.");
-    this.router.navigate([this.path])
+    window.location.reload();
     },
     err=>{
     console.error('Error al eliminar el producto');

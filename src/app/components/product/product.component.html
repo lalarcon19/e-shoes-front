@@ -2,12 +2,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <section class="contenedor">
+  <app-header></app-header>
   <!-- Contenedor de elementos -->
   <div>
+
     <h1>Lista de productos</h1>
   </div>
   <div class="contenedor-items" *ngIf="!isAdmin && !flag">
+
     <div class="item" *ngFor="let product of products">
+
 
       <img src="https://i.pinimg.com/564x/36/fc/12/36fc12635f8ebdcb9cc49083ff28993c.jpg" alt="" class="img-item" />
       <span class="titulo-item">{{ product.name }}</span>

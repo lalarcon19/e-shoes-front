@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { AuthResponse, LoginRequest } from 'src/app/models/auth';
 
-const url = "https://eccomerce-shoes.onrender.com/user/auth"
+const url = "http://localhost:8080/user/auth"
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,6 @@ export class AuthService {
   logout(): void {
     this.localStorageService.removeItem(['token', 'wishlist', 'carrito'])
     this.router.navigate(['inicio'])
-
   }
 
   public login(data: LoginRequest): Observable<AuthResponse> {

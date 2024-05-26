@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { ProductResponse } from 'src/app/models/product';
 
-const url = "https://eccomerce-shoes.onrender.com/wishlist"
+const url = "http://localhost:8080/wishlist"
 
 @Injectable({
   providedIn: 'root'

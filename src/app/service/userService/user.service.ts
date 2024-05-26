@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
-const urlUser = "https://eccomerce-shoes.onrender.com/user"
+const urlUser = "http://localhost:8080/user"
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +35,6 @@ export class UserService {
   }
 
   public deleteUser(id:number){
-    return this.http.delete<UserResponse>(urlUser + `/delete/${id}`, { headers: this.headers })
+    return this.http.delete(urlUser + `/delete/${id}`, { headers: this.headers })
   }
 }

@@ -16,6 +16,17 @@
       />
     </div>
     <div class="input-group">
+      <label for="">Tipo Documento:</label>
+      <select
+      name="documentType"
+      formControlName="documentType"
+      id="documentType"
+      formControlName="documentType">
+        <option disabled selected>Seleccionar</option>
+        <option *ngFor="let doc of documentType" [value]="doc">{{ doc }}</option>
+      </select>
+    </div>
+    <div class="input-group">
       <label for="name">Nombre:</label>
       <input
         type="text"
@@ -45,22 +56,7 @@
         formControlName="address"
       />
     </div>
-    <div class="input-group">
-      <label for="">Tipo Documento:</label>
-      <select
-        name="documentType"
-        formControlName="documentType"
-        id="documentType"
-      >
-        <option disabled selected>Seleccionar</option>
-        <option>
-          <select name="tipo_documento" formControlName="documentType" id="tipo_documento" formControlName="documentType">
-            <option disabled selected>Seleccionar</option>
-            <option *ngFor="let doc of documentType" [value]="doc">{{ doc }}</option>
-          </select>
-        </option>
-      </select>
-    </div>
+
     <div class="input-group">
       <label for="price">Documento</label>
       <input

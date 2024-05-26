@@ -4,7 +4,7 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 import { Observable, catchError, throwError } from 'rxjs';
 import { PaymentRequest, PaymentResponse } from 'src/app/models/payment';
 
-const url = "https://eccomerce-shoes.onrender.com/payment"
+const url = "http://localhost:8080/payment"
 
 @Injectable({
   providedIn: 'root'

@@ -40,7 +40,9 @@ export class EditProductComponent {
       img: formData.img,
     };
     this.productService.updateProduct(id, product).subscribe({
-      next: (res: ProductResponse) => {},
+      next: (res: ProductResponse) => {
+        alert("producto actualizado");
+      },
       error: (error) => {
         console.error(error);
       },

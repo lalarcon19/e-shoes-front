@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserResponse } from 'src/app/models/user';
 import { UserService } from 'src/app/service/userService/user.service';
 import { UserRequest } from 'src/app/models/user';
+import { DocumentType } from 'src/app/models/signup-request';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -35,12 +36,14 @@ export class EditUserComponent {
       id: formData.id,
       name: formData.name,
       email: formData.email,
-      address: formData.name,
-      documentType: formData.name,
+      address: formData.address,
+      documentType: formData.documentType,
       document: formData.name,
     };
     this.userService.updateUser(id, user).subscribe({
-      next: (res: UserResponse) => {},
+      next: (res: UserResponse) => {
+        alert("Usuario actualizado")
+      },
       error: (error) => {
         console.error(error);
       }
