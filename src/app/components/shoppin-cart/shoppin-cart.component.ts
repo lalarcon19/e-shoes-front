@@ -13,7 +13,8 @@ export class ShoppinCartComponent implements OnInit {
   carrito: ProductResponse[] = [];
   flag: boolean = true;
   total: number = 0;
-  productsList = this.localStorageService.getProductsCarrito();
+  cantidad: number = 1;
+  productsList: ProductResponse[] = this.localStorageService.getProducts('carrito');
 
 
   constructor(private localStorageService: LocalStorageService) {
@@ -22,37 +23,45 @@ export class ShoppinCartComponent implements OnInit {
 
   ngOnInit() {
     this.getProduct();
-
   }
 
   getProduct() {
     if (this.productsList.length === 0) {
       this.flag = false
     } else {
-      this.carrito = this.productsList
+      this.carrito = this.productsList;
+      this.carrito.map(p => {
+        this.total += p.price;
+        p.cantidad = this.cantidad;
+      })
+      console.log(this.carrito);
+      
     }
   }
 
   addCantidad(product: ProductResponse) {
-    product.cantidad = 1
-    product.cantidad++
+    this.cantidad++;
+    product.cantidad = this.cantidad;
     this.total = this.total += product.price;
-    console.log(product.cantidad);
   }
 
   reducirCantidad(product: ProductResponse) {
     let cantidad: number = 1
-
   }
 
-  deleteWishList(product: ProductResponse) {
+  deleteCarrito(product: ProductResponse) {
     if (this.productsList.length === 0) {
       this.flag = false
     } else {
       let index = this.carrito.indexOf(product);
+      this.total -= product.price * product.cantidad;
       if (index > -1) {
         this.carrito.splice(index, 1);
         this.localStorageService.setItem('carrito', this.carrito)
+      }
+
+      if (this.carrito.length === 0) {
+        this.flag = false;
       }
     }
   }

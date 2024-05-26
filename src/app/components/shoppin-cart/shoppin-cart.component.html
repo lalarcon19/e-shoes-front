@@ -25,7 +25,7 @@
                     </div>
                     <span class="carrito-item-precio">{{product.price}}</span>
                 </div>
-                <span class="btn-eliminar">
+                <span class="btn-eliminar" (click)="deleteCarrito(product)">
                     <i class="fa-solid fa-trash"></i>
                 </span>
             </div>

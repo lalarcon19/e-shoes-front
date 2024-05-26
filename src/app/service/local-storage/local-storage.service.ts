@@ -41,41 +41,22 @@ export class LocalStorageService {
     key.map(k => localStorage.removeItem(k));
   }
 
-  getProductsToWishlist(): ProductResponse[] {
-    let wishlist: ProductResponse[] = [];
-    let list = localStorage.getItem('wishlist')
-    if (list != null) {
-      wishlist = JSON.parse(list);
-      console.log(wishlist);
-      return wishlist;
-    } else {
-      console.log("Empty wishlist.");
-      return [];
-    }
-    
-  }
+  getProducts(item: string): ProductResponse[] {
+    let products: ProductResponse[] = [];
+    let list = this.getItem(item);
 
-  getProductsCarrito(): ProductResponse[] {
-    let carrito: ProductResponse[] = [];
-    let list = localStorage.getItem('carrito');
-    if (list !== null) {
-        try {
-            const parsedList = JSON.parse(list);
-            // Verifica que el dato parseado es un array
-            if (Array.isArray(parsedList)) {
-                carrito = parsedList as ProductResponse[];
-                console.log(carrito);
-            } else {
-                console.error("Error: El dato parseado no es un array.");
-            }
-        } catch (error) {
-            console.error("Error al parsear JSON desde localStorage:", error);
-        }
+    if (list.length !== 0) {
+      try {
+        products = JSON.parse(list);
+        console.log("Parsed product:", products);
+      } catch (e) {
+        console.error("Error parsing JSON:", e);
+      }
     } else {
-        console.log("Carrito vacío.");
+      console.log("Empty products.");
     }
-    return carrito;
-    
+
+    return products;
   }
 
 }
