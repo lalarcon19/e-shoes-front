@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { UserResponse } from 'src/app/models/user';
+import { UserRequest, UserResponse } from 'src/app/models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
-const urlUser = "http://localhost:8080/user"
+const urlUser = "https://eccomerce-shoes.onrender.com/user"
 @Injectable({
   providedIn: 'root'
 })
@@ -30,11 +30,11 @@ export class UserService {
     return this.http.get<UserResponse>(urlUser + `/getById/${id}`, { headers: this.headers })
   }
 
-  public updateUser(idUser: number):Observable<UserResponse>{
-    return this.http.get<UserResponse>(urlUser + `/updateUser/${idUser}`, { headers: this.headers })
+ public updateUser(id: number, data: UserRequest): Observable<UserResponse>{
+    return this.http.put<UserResponse>(urlUser + `/update/${id}`, data, { headers: this.headers })
   }
 
-  public deleteUser(document: String):Observable<UserResponse>{
-    return this.http.delete<UserResponse>(urlUser + `/deleteUser/${document}`, { headers: this.headers })
+  public deleteUser(id:number){
+    return this.http.delete(urlUser + `/delete/${id}`, { headers: this.headers })
   }
 }

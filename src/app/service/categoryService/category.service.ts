@@ -3,7 +3,7 @@ import { Category } from 'src/app/models/category';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const urlCategory = "http://localhost:8080/category"
+const urlCategory = "https://eccomerce-shoes.onrender.com/category"
 
 @Injectable({
   providedIn: 'root'

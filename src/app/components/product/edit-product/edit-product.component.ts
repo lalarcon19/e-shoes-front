@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Token } from 'src/app/models/token';
-import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryEnum } from 'src/app/models/category';
@@ -13,6 +11,7 @@ import { ProductRequest, ProductResponse, UpdateProductRequest } from 'src/app/m
   styleUrls: ['./edit-product.component.css'],
 })
 export class EditProductComponent {
+
   productForm: FormGroup;
 
   category = Object.values(CategoryEnum);
@@ -41,7 +40,9 @@ export class EditProductComponent {
       img: formData.img,
     };
     this.productService.updateProduct(id, product).subscribe({
-      next: (res: ProductResponse) => {},
+      next: (res: ProductResponse) => {
+        alert("producto actualizado");
+      },
       error: (error) => {
         console.error(error);
       },

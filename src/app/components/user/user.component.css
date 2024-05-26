@@ -37,8 +37,41 @@
 }
 
 .btn {
-  width: 50px;
-  height: 50px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.profile,
+.payment {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.payment-no-exist p {
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.btn{
+  display: flex;
+  align-items: flex-end;
 }
 
 .container .checkout {
@@ -90,12 +123,11 @@ h1 {
   font-weight: 400;
   text-align: center;
 }
-
 th {
   text-transform: uppercase;
   font-family: 'DM Sans', sans-serif;
+  background-color: rgb(237, 228, 97);
 }
-
 
 th,
 td {
@@ -107,8 +139,10 @@ td {
 td .eliminar:hover {
   cursor: pointer;
 }
-
-.eliminar {
+td .icono:hover {
+  cursor: pointer;
+}
+.icono {
   width: auto;
   height: 100%;
   border: none;

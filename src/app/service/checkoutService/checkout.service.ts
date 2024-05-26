@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Checkout } from 'src/app/models/checkout';
 
-const urlCheckout = "http://loclhost:8080/checkout"
+const urlCheckout = "https://eccomerce-shoes.onrender.com/checkout"
 
 @Injectable({
   providedIn: 'root'

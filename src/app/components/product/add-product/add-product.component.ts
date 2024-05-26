@@ -40,7 +40,10 @@ export class AddProductComponent {
       img: formData.img,
     };
     this.productService.createProduct(product).subscribe({
-      next: (res: ProductResponse) => {},
+      next: (res: ProductResponse) => {
+        alert("Producto creado exitosamente")
+        window.location.reload();
+      },
       error: (error) => {
         console.error(error);
       },

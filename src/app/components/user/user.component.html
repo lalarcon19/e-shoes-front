@@ -3,11 +3,9 @@
 <div class="container" *ngIf="!isAdmin">
 
   <div class="btns">
-    <button class="logout" (click)="logout()">
+    <button class="btn" (click)="logout()">
       Cerrar sesion
     </button>
-    btn actualizar
-    btn cambiar contraseña
   </div>
 
   <div class="profile">
@@ -51,7 +49,7 @@
       <th> Direccion </th>
       <th> Tipo Documento </th>
       <th> Documento </th>
-      <th><button class="eliminar"><i class="fa-solid fa-trash"></i></button></th>
+      <th> Acciones </th>
     </tr>
 
     <tr *ngFor="let user of listUser">
@@ -61,7 +59,9 @@
       <td>{{ user.address }}</td>
       <td>{{ user.documentType }}</td>
       <td>{{ user.document }}</td>
-      <td><button class="eliminar"><i class="fa-solid fa-trash "></i></button></td>
+      <td>
+        <button class="icono" (click)="openEditUser()"><i class="fas fa-edit"></i></button>
+        <button class="icono" (click)="deleteUser(user.id)"><i class="fas fa-trash-alt"></i></button></td>
     </tr>
 
   </table>
